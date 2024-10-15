@@ -1,0 +1,68 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: #1e1e1e;
+    font-family: Arial, sans-serif;
+    border-bottom: 1px solid #ddd;
+    color:#fff;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.navLinks {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
+
+.navLinks li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    color:white;
+}
+
+.rightSection {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.searchInput {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 200px; /* Set a width for the search input */
+}
+
+.searchButton {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.language {
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+.loginLink {
+    text-decoration: none;
+    font-size: 14px;
+    color:white;
+}
+
+.signUpButton {
+    background-color: #0070f3;
+    color: #fff;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

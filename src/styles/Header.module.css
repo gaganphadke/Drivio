@@ -1,0 +1,55 @@
+.header {
+    background-color: #1e1e1e; /* Dark background for the header */
+    padding: 15px 0;
+    color: #fff; /* White text color */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+  }
+  
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+  }
+  
+  .nav {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .nav a {
+    color: #ccc;
+    font-size: 16px;
+    transition: color 0.3s;
+  }
+  
+  .nav a:hover {
+    color: #fff; /* Change link color to white on hover */
+  }
+  
+  .userControls {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .userControls a {
+    color: #888;
+    font-size: 16px;
+    transition: color 0.3s;
+  }
+  
+  .userControls a:hover {
+    color: #fff; /* Change color on hover */
+  }
+  

@@ -1,0 +1,32 @@
+.footer {
+    background-color: #1e1e1e; /* Dark background for the footer */
+    padding: 20px 0;
+    color: #ccc; /* Light gray text color */
+    text-align: center;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .footerNav {
+    margin-top: 10px;
+    display: flex;
+    gap: 15px;
+  }
+  
+  .footerNav a {
+    color: #888; /* Slightly darker gray for links */
+    font-size: 14px;
+    transition: color 0.3s;
+  }
+  
+  .footerNav a:hover {
+    color: #fff; /* Change link color to white on hover */
+  }
+  
