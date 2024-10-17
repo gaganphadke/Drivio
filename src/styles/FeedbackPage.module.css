@@ -1,0 +1,18 @@
+.pageWrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .feedbackContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1; /* Ensures this container takes all available vertical space */
+    margin: 50px 0; /* Optional: Adjust margin if necessary */
+    width: 80%; /* Increases the width of the feedback container */
+    max-width: 900px; /* Set a max-width for larger screens */
+    margin: 0 auto; /* Center horizontally */
+  }
+  
