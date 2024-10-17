@@ -1,0 +1,189 @@
+.container {
+  display: flex;
+  justify-content: flex-start; /* Align to the left */
+  align-items: flex-end; /* Align items to the bottom */
+  height: 100vh; /* Full viewport height */
+  background-image: url('../assets/back.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 2rem; /* Adjusted padding */
+  position: relative; /* Relative positioning for child elements */
+  margin-bottom: 20px; /* Add margin to create space from bottom */
+}
+
+.switchContainer {
+  display: flex; /* Display buttons in a row */
+  margin-bottom: 1rem; /* Margin below the toggle switch */
+  justify-content: center; /* Center the buttons within the form */
+}
+
+.switchButton {
+  appearance: none; /* Remove default styling */
+  background: #ffffff; /* White background */
+  border: 2px solid #ccc; /* Light gray border */
+  color: #333; /* Text color */
+  cursor: pointer; /* Pointer cursor on hover */
+  font-family: Clarkson, Helvetica, sans-serif; /* Font family */
+  font-size: 16px; /* Font size */
+  font-weight: 500; /* Font weight */
+  padding: 10px 20px; /* Padding */
+  border-radius: 20px; /* Rounded corners */
+  margin-right: 10px; /* Space between buttons */
+  transition: background 0.3s ease, color 0.3s ease; /* Smooth transitions */
+  position: relative; /* For positioning the active state */
+  z-index: 1; /* Place above other elements */
+}
+
+.switchButton.active {
+  background: #0070f3; /* Active background color */
+  color: white; /* Active text color */
+  border: none; /* Remove border */
+}
+
+.switchButton:not(.active):hover {
+  background: #f0f0f0; /* Background on hover */
+}
+
+.formContainer {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 2rem;
+  border-radius: 12px; /* Slightly larger radius for a smoother look */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  width: 300px;
+  text-align: center;
+  margin-bottom: 70px; /* Adjust margin for alignment */
+  margin-left: 50px;
+}
+
+.formContainer .title {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.formContainer .form {
+  display: flex;
+  flex-direction: column;
+}
+
+.formContainer .form input {
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.formContainer .form input:focus {
+  border: 1px solid #0070f3; /* Change border color on focus */
+  outline: none; /* Remove outline */
+}
+
+.formContainer .form button {
+  appearance: none;
+  background-color: #ffffff; /* Initial background color */
+  border: none; /* No border */
+  color: #000000; /* Initial text color */
+  cursor: pointer; /* Pointer cursor */
+  display: inline-block; /* Inline block for proper sizing */
+  font-family: Clarkson, Helvetica, sans-serif; /* Font family */
+  font-size: 14px; /* Font size */
+  font-weight: 500; /* Font weight */
+  line-height: 1em; /* Line height */
+  margin: 0; /* Reset margin */
+  padding: 1.5em 2.2em; /* Padding */
+  position: relative; /* For absolute positioning of pseudo-elements */
+  text-align: center; /* Center text */
+  text-transform: uppercase; /* Uppercase text */
+  overflow: hidden; /* Ensure the filling does not overflow */
+  border-radius: 30px; /* Rounded corners */
+  transition: color 0.3s ease; /* Smooth color transition */
+  white-space: nowrap; /* Prevent text wrap */
+}
+
+.formContainer .form button:before {
+  content: ""; /* Pseudo-element for background fill */
+  position: absolute; /* Absolute positioning */
+  top: 0; /* Align to top */
+  left: 0; /* Align to left */
+  height: 100%; /* Full height */
+  width: 100%; /* Full width */
+  background: linear-gradient(90deg, #ff0075, #0070f3); /* Gradient fill color */
+  clip-path: polygon(-1% 0, 0 0, 0 100%, -1% 100%); /* Start with no fill */
+  transition: clip-path 0.5s ease; /* Smooth clip-path transition */
+  z-index: 0; /* Place behind the text */
+}
+
+.formContainer .form button:hover:before {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); /* Fill from left on hover */
+}
+
+.formContainer .form button span {
+  position: relative; /* Position relative to ensure it’s above the pseudo-element */
+  z-index: 1; /* Ensure text is above background */
+  color: #000000; /* Initial text color */
+  transition: color 0.3s ease; /* Smooth text color transition */
+}
+
+.formContainer .form button:hover span {
+  color: white; /* Change text color to white on hover */
+}
+
+.formContainer p {
+  margin-top: 1rem; /* Margin above paragraph */
+}
+
+.formContainer span {
+  color: #0070f3; /* Span text color */
+  cursor: pointer; /* Pointer on hover */
+}
+
+.forgotPassword:hover {
+  color: #0070f3; /* Link color */
+  cursor: pointer; /* Pointer on hover */
+  text-decoration: underline;
+}
+
+.toggleContainer {
+  display: flex; /* Use flexbox to arrange toggle buttons */
+  border-radius: 20px; /* Rounded corners for the toggle container */
+  overflow: hidden; /* Ensure buttons don’t overflow the container */
+  background-color: #f0f0f0; /* Background color for the container */
+  margin-bottom: 1rem; /* Margin below the toggle switch */
+  position: relative; /* Position relative for the sliding effect */
+}
+
+.toggleButton {
+  flex: 1; /* Equal width for both buttons */
+  padding: 10px; /* Padding for the buttons */
+  text-align: center; /* Center text */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: color 0.3s ease; /* Smooth color transitions */
+  font-family: Clarkson, Helvetica, sans-serif; /* Font family */
+  font-size: 16px; /* Font size */
+  color: #333; /* Text color */
+  position: relative; /* Relative position for child elements */
+  z-index: 1; /* Ensure the button text is above the sliding effect */
+  border-radius: 20px; /* Rounded corners for the buttons */
+}
+
+.toggleButton.active {
+  color: white; /* Active text color */
+}
+
+.toggleSlider {
+  content: ""; /* Pseudo-element for the sliding effect */
+  position: absolute; /* Position absolutely within the toggle container */
+  top: 0; /* Align to the top */
+  left: 0; /* Align to the left */
+  height: 100%; /* Full height */
+  width: 50%; /* Initial width (one button's width) */
+  background: linear-gradient(90deg, #ff0075, #0070f3); /* Gradient fill color */
+  transition: transform 0.3s ease; /* Smooth transition for the sliding effect */
+  z-index: 0; /* Place behind the buttons */
+  border-radius: 20px; /* Rounded corners for the slider */
+}
+
+.toggleContainer.active .toggleSlider {
+  transform: translateX(100%); /* Slide to the right when Signup is active */
+}
