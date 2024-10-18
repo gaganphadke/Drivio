@@ -1,102 +1,166 @@
 .feedbackContainer {
-    width: 400px;
-    padding: 20px;
-    border-radius: 10px;
-    background: #fff;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-    text-align: center;
-  }
-  
-  .feedbackHeader {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  
-  .feedbackIcon {
-    font-size: 24px;
-  }
-  
-  .feedbackTitle {
-    font-size: 18px;
-    font-weight: bold;
-  }
-  
-  .closeButton {
-    background: none;
-    border: none;
-    font-size: 18px;
-    cursor: pointer;
-  }
-  
-  /* h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-  } */
-  
-  /* p {
-    font-size: 14px;
-    margin-bottom: 20px;
-    color: #666;
-  } */
-  
-  .emojiContainer {
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 20px;
-  }
-  
-  .emoji {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-  }
-  
-  .emojiIcon {
-    font-size: 30px;
-    margin-bottom: 10px;
-  }
-  
-  .emojiLabel {
-    background-color: #000;
-    color: #fff;
-    padding: 5px 10px;
-    border-radius: 10px;
-    font-size: 12px;
-    margin-top: 5px;
-  }
-  
-  .emoji.selected {
-    transform: scale(1.2);
-  }
-  
-  .commentBox {
-    width: 100%;
-    height: 80px;
-    margin-top: 20px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    font-size: 14px;
-  }
-  
-  .submitButton {
-    width: 100%;
-    padding: 15px;
-    margin-top: 20px;
-    background-color: #34d399;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .submitButton:hover {
-    background-color: #059669;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 4px 4px 6px rgba(0.1, 0, 0, 0.1);
+  width: 45%;
+  height: 400px;
+
+}
+
+.feedbackHeader {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.feedbackIcon {
+  font-size: 24px;
+}
+
+.feedbackTitle {
+  font-size: 18px;
+  font-weight: bold;
+  align-items: center;
+  display: flex;
+  text-align: center;
+  margin-right: 160px;
+
+}
+
+
+
+.emojiContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.emoji {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.emojiIcon {
+  width: 40px;
+  /* Set custom size for emoji */
+  height: 40px;
+  margin-bottom: 10px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.emojiLabel {
+  font-size: 14px;
+  color: #666;
+}
+
+/* Hover effect: increase emoji size on hover */
+.emoji:hover .emojiIcon {
+  transform: scale(1.5);
+}
+
+/* Selected emoji styling */
+.selected .emojiIcon {
+  transform: scale(1.5);
+}
+
+.commentBox {
+  width: 100%;
+  padding: 10px;
+  margin-top: 20px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  resize: none;
+  height: 300px;
+  margin-bottom: 25px;
+}
+
+.submitButton {
+  appearance: none;
+  background-color: #ffffff;
+  /* Initial background color */
+  border: none;
+  /* No border */
+  color: #000000;
+  /* Initial text color */
+  cursor: pointer;
+  /* Pointer cursor */
+  display: inline-block;
+  /* Inline block for proper sizing */
+  font-family: Clarkson, Helvetica, sans-serif;
+  /* Font family */
+  font-size: 14px;
+  /* Font size */
+  font-weight: 500;
+  /* Font weight */
+  line-height: 1em;
+  /* Line height */
+  margin: 0;
+  /* Reset margin */
+  padding: 1.5em 2.2em;
+  /* Padding */
+  position: relative;
+  /* For absolute positioning of pseudo-elements */
+  text-align: center;
+  /* Center text */
+  text-transform: uppercase;
+  /* Uppercase text */
+  overflow: hidden;
+  /* Ensure the filling does not overflow */
+  border-radius: 10px;
+  /* Rounded corners */
+  transition: color 0.3s ease;
+  /* Smooth text color transition */
+  white-space: nowrap;
+  /* Prevent text wrap */
+}
+
+
+.submitButton:before {
+  content: "";
+  /* Pseudo-element for background fill */
+  position: absolute;
+  /* Absolute positioning */
+  top: 0;
+  /* Align to top */
+  left: 0;
+  /* Align to left */
+  height: 100%;
+  /* Full height */
+  width: 100%;
+  /* Full width */
+  background: linear-gradient(90deg, #ff0075, #0070f3);
+  /* Gradient fill color */
+  clip-path: polygon(-1% 0, 0 0, 0 100%, -1% 100%);
+  /* Start with no fill */
+  transition: clip-path 0.5s ease;
+  /* Smooth clip-path transition */
+  z-index: 0;
+  /* Place behind the text */
+}
+
+.submitButton:hover:before {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  /* Fill from left on hover */
+}
+
+.submitButton span {
+  position: relative;
+  top: -4px;
+  z-index: 1;
+  color: #000000;
+  transition: color 0.3s ease;
+}
+
+.submitButton:hover span {
+  color: white;
+  /* Change text color to white on hover */
+}

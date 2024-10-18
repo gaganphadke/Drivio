@@ -1,15 +1,22 @@
 import React, { useState } from 'react';
-import styles from '../styles/Feedback.module.css';  // Import the CSS file for styling
+import Image from 'next/image'; // Import Next.js Image component
+import styles from '../styles/Feedback.module.css';
+
+import goodImg from '../assets/good.png';
+import badImg from '../assets/bad.png';
+import neutralImg from '../assets/neutral.png';
+import vGoodImg from '../assets/v_good.png';
+import vBadImg from '../assets/v_bad.png';
 
 const Feedback = () => {
   const [selectedEmoji, setSelectedEmoji] = useState(null);
 
   const emojis = [
-    { label: 'Very Bad', emoji: '😵‍💫' },
-    { label: 'Bad', emoji: '😞' },
-    { label: 'Medium', emoji: '😐' },
-    { label: 'Good', emoji: '🙂' },
-    { label: 'Very Good', emoji: '😄' }
+    { label: 'Very Bad', image: vBadImg },
+    { label: 'Bad', image: badImg },
+    { label: 'Neutral', image: neutralImg },
+    { label: 'Good', image: goodImg },
+    { label: 'Very Good', image: vGoodImg }
   ];
 
   const handleEmojiClick = (index) => {
@@ -21,13 +28,8 @@ const Feedback = () => {
       <div className={styles.feedbackHeader}>
         <span className={styles.feedbackIcon}>💬</span>
         <span className={styles.feedbackTitle}>Feedback</span>
-        <button className={styles.closeButton}>✖</button>
       </div>
       <h2>How are you feeling?</h2>
-      <p>
-        Your input is valuable in helping us better understand your needs and
-        tailor our service accordingly.
-      </p>
       <div className={styles.emojiContainer}>
         {emojis.map((emoji, index) => (
           <div
@@ -37,7 +39,13 @@ const Feedback = () => {
             }`}
             onClick={() => handleEmojiClick(index)}
           >
-            <span className={styles.emojiIcon}>{emoji.emoji}</span>
+            <Image 
+              src={emoji.image} 
+              alt={emoji.label} 
+              className={styles.emojiIcon} 
+              width={50} // Adjust the size as needed
+              height={50} 
+            />
             {selectedEmoji === index && (
               <div className={styles.emojiLabel}>{emoji.label}</div>
             )}
@@ -48,7 +56,7 @@ const Feedback = () => {
         className={styles.commentBox}
         placeholder="Add a Comment..."
       ></textarea>
-      <button className={styles.submitButton}>Submit Now</button>
+      <button className={styles.submitButton}><span>Submit Now</span></button>
     </div>
   );
 };
