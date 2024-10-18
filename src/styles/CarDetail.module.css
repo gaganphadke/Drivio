@@ -1,0 +1,135 @@
+.carDetailContainer {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  .carHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+  }
+  
+  .backButton {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .carInfo h2 {
+    margin: 0;
+    font-size: 24px;
+  }
+  
+  .carModel {
+    font-size: 14px;
+    color: grey;
+  }
+  
+  .moreOptions {
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .carImageContainer {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+  }
+  
+  .carImage {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .carSpecs {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    margin: 20px 0;
+  }
+  
+  .specItem span {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .specItem p {
+    font-size: 12px;
+    color: grey;
+  }
+  
+  .transmission {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .statsSection {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .statItem {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    flex: 1;
+    text-align: center;
+    margin-right: 10px;
+  }
+  
+  .statItem:last-child {
+    margin-right: 0;
+  }
+  
+  .statHeader {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .activityChange {
+    color: green;
+    font-size: 12px;
+  }
+  
+  .actionSection {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+  }
+  
+  .actionButton {
+    background-color: #ddd;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .bookingSection {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+  }
+  
+  .bookingButton {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
