@@ -187,3 +187,16 @@
 .toggleContainer.active .toggleSlider {
   transform: translateX(100%); /* Slide to the right when Signup is active */
 }
+.googleButton {
+  background-color: #4285F4;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.googleButton:hover {
+  background-color: #357ae8;
+}

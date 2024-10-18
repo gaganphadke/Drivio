@@ -52,4 +52,12 @@
   .userControls a:hover {
     color: #fff; /* Change color on hover */
   }
+  /* Header.module.css */
+.profilePic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-left: 20px;
+}
+
   
