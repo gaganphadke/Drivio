@@ -3,10 +3,10 @@
     justify-content: space-between;
     align-items: center;
     padding: 15px 30px;
-    background-color: #1e1e1e;
+    background-color: var(--navbar-bg);
     font-family: Arial, sans-serif;
     border-bottom: 1px solid #ddd;
-    color:#fff;
+    color: var(--navbar-text);
 }
 
 .logo {
@@ -22,9 +22,8 @@
 
 .navLinks li a {
     text-decoration: none;
-    color: #333;
+    color: var(--link-color);
     font-size: 16px;
-    color:white;
 }
 
 .rightSection {
@@ -37,7 +36,7 @@
     padding: 8px;
     border-radius: 5px;
     border: 1px solid #ccc;
-    width: 200px; /* Set a width for the search input */
+    width: 200px;
 }
 
 .searchButton {
@@ -55,7 +54,7 @@
 .loginLink {
     text-decoration: none;
     font-size: 14px;
-    color:white;
+    color: var(--navbar-text);
 }
 
 .signUpButton {
@@ -65,4 +64,26 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.themeToggle {
+    background: none;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    color: var(--navbar-text);
+}
+
+/* Light Mode Variables */
+body.light {
+    --navbar-bg: #121111;
+    --navbar-text: #333;
+    --link-color: #333;
+}
+
+/* Dark Mode Variables */
+body.dark {
+    --navbar-bg: #1e1e1e;
+    --navbar-text: #fff;
+    --link-color: #fff;
 }

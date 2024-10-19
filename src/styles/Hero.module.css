@@ -1,11 +1,12 @@
 .hero {
   position: relative;
-  height: 600px;
+  height: 100vh; /* Full viewport height */
   background-color: #1e1e1e;
   color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden; /* Prevent background image from overflowing */
 }
 
 .backgroundImage {
@@ -15,7 +16,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  opacity: 0.8;
+  opacity: 0.7; /* Slightly darker for better contrast */
   z-index: 1;
 }
 
@@ -23,72 +24,56 @@
   position: relative;
   z-index: 2;
   text-align: center;
-  width: 90%; /* Make content take 90% of the screen width */
-  max-width: 1200px; /* Optional: Set a max width for larger screens */
+  width: 90%;
+  max-width: 1200px;
+}
+
+.content h1 {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Add shadow for better readability */
 }
 
 .searchForm {
   display: flex;
-  flex-wrap: wrap; /* Allow elements to wrap */
-  gap: 20px; /* Space between elements */
-  background: rgba(255, 255, 255, 0.1);
-  padding: 20px;
-  border-radius: 10px;
-  width: 90%; /* Make the form take 90% of the content width */
-  margin: 0 auto; /* Center the form */
+  flex-wrap: wrap;
+  gap: 20px;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 30px;
+  border-radius: 15px;
+  width: 100%;
+  margin: 0 auto;
+  backdrop-filter: blur(10px); /* Add a blur effect to the background */
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
 }
 
 .inputGroup {
-  flex: 1; /* Allow equal width for input groups */
+  flex: 1 1 calc(33.333% - 20px); /* Adjust for 3 columns, accounting for gap */
+  min-width: 200px; /* Minimum width for responsiveness */
   display: flex;
   flex-direction: column;
+  max-width: 300px;
 }
 
 .inputGroup label {
-  font-size: 14px;
+  font-size: 0.9rem;
   margin-bottom: 5px;
+  font-weight: bold;
 }
 
 .inputGroup input {
-  padding: 10px;
-  border-radius: 5px;
-  border: none;
-}
-
-.buttonGroup {
-  display: flex;
-  align-items: center; /* Center vertically */
-  margin-top: 20px; /* Space above this section */
-  width: 100%; /* Make this section take the full width */
-}
-
-.filterGroup {
-  display: flex;
-  gap: 10px; /* Space between filter buttons */
-}
-
-.searchButtonContainer {
-  margin-left: auto; /* Pushes the search button to the extreme right */
-}
-
-.filterButton {
-  background: #000;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
   color: #fff;
-  padding: 10px 20px;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
+  font-size: 1rem;
 }
 
-.searchButton {
-  background: #0070f3;
-  color: #fff;
-  padding: 15px 30px;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
-  font-size: 16px;
+.inputGroup input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
 }
+
 .toggleContainer {
   display: flex;
   align-items: center;
@@ -99,20 +84,21 @@
   display: flex;
   align-items: center;
   cursor: pointer;
+  font-size: 0.9rem;
 }
 
 .toggleContainer input[type="checkbox"] {
-  display: none; /* Hide the default checkbox */
+  display: none;
 }
 
 .toggleSwitch {
   width: 40px;
   height: 20px;
-  background-color: #ccc;
+  background-color: rgba(255, 255, 255, 0.3);
   border-radius: 20px;
   position: relative;
   transition: background-color 0.3s;
-  margin-left: 10px; /* Space between label and toggle */
+  margin-left: 10px;
 }
 
 .toggleSwitch::before {
@@ -134,58 +120,131 @@
 .toggleContainer input[type="checkbox"]:checked + .toggleSwitch::before {
   transform: translateX(20px);
 }
-.filterGroup {
-  display: flex;
-  gap: 10px; /* Space between filter buttons */
-  margin-top: 10px; /* Space above the filter group */
-  align-items: center; /* Center items vertically */
-  flex-wrap: wrap; /* Allow wrapping for smaller screens */
-}
-
-.searchButtonContainer {
-  margin-top: 20px; /* Space above the search button */
-  text-align: right; /* Align the search button to the right */
-}
-.actionGroup {
-  display: flex;
-  justify-content: space-between; /* Space between filter and search button */
-  align-items: center; /* Center vertically */
-  margin-top: 5px; /* Space above the action group */
-}
-
-.filterGroup {
-  display: flex;
-  gap: 10px; /* Space between filter buttons */
-  margin-top: 5px;
-  align-items: center; /* Center items vertically */
-}
 
 .actionGroup {
   display: flex;
-  align-items: center; /* Center items vertically */
-  margin-top: 0px; /* Space above the action group */
-  width: 100%; /* Ensure full width to control layout */
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 20px;
 }
 
 .filterGroup {
   display: flex;
-  gap: 10px; /* Space between filter buttons */
-  align-items: center; /* Center items vertically */
+  gap: 10px;
+  align-items: center;
+}
+
+.filterGroup p {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.filterButton {
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.1s;
+}
+
+.filterButton:hover {
+  background: rgba(0, 0, 0, 0.7);
+  transform: translateY(-2px);
 }
 
 .searchButtonContainer {
-  margin-left: auto; /* Push search button to the right */
-  margin-top: 0px;
+  margin-left: auto;
 }
-.toggleContainer {
+
+.searchButton {
+  background: #0070f3;
+  color: #fff;
+  padding: 12px 30px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background-color 0.3s, transform 0.1s;
+}
+
+.searchButton:hover {
+  background: #0056b3;
+  transform: translateY(-2px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .content h1 {
+    font-size: 2rem;
+  }
+
+  .searchForm {
+    padding: 20px;
+  }
+
+  .inputGroup {
+    flex: 1 1 100%;
+  }
+
+  .actionGroup {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filterGroup {
+    margin-bottom: 15px;
+  }
+
+  .searchButtonContainer {
+    width: 100%;
+  }
+
+  .searchButton {
+    width: 100%;
+  }
+}
+.hero {
+  position: relative;
+  height: 100vh;
+  color: #fff;
   display: flex;
   align-items: center;
-  margin-top: 9px; /* Adjust as needed */
+  justify-content: center;
+  overflow: hidden;
 }
 
-.filterGroup {
-  display: flex;
-  gap: 10px; /* Space between filter buttons */
-  align-items: center; /* Center items vertically */
-  margin-top: 0px; /* Reduce from 10px to 5px (or adjust as needed) */
+.backgroundImageWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.backgroundImageWrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);  /* Darkens the image */
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  width: 90%;
+  max-width: 1200px;
+}
+.selected {
+  background-color: blue; /* Color when selected */
+  color: white; /* Text color when selected */
 }

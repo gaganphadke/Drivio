@@ -10,4 +10,20 @@ body {
     color: inherit;
     text-decoration: none;
   }
-  
+  /* Define default light mode styles */
+body {
+    --navbar-bg: #f8f8f8;
+    --navbar-text: #333;
+    --link-color: #333;
+    background-color: var(--navbar-bg);
+    color: var(--navbar-text);
+}
+
+/* Dark mode styles */
+body.dark {
+    --navbar-bg: #1e1e1e;
+    --navbar-text: #fff;
+    --link-color: #fff;
+    background-color: var(--navbar-bg);
+    color: var(--navbar-text);
+}
