@@ -1,0 +1,54 @@
+.popularDestinationsSection {
+  padding: 2rem;
+  text-align: center;
+}
+
+.heading h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.heading p {
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+.destinationsGrid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr); /* 6 items per row */
+  gap: 1rem; /* Adjust spacing between cards */
+  justify-content: center;
+}
+
+.destinationCard {
+  background-color: #f0f0f0;
+  padding: 0.75rem; /* Reduce padding to make the cards smaller */
+  border-radius: 8px; /* Slightly smaller border radius */
+  font-size: 0.9rem; /* Smaller font size */
+  color: #000;
+  text-align: center;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.destinationCard:hover {
+  background-color: #e0e0e0;
+}
+
+@media (max-width: 1200px) {
+  .destinationsGrid {
+    grid-template-columns: repeat(4, 1fr); /* 4 items per row on medium screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .destinationsGrid {
+    grid-template-columns: repeat(2, 1fr); /* 2 items per row on small screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .destinationsGrid {
+    grid-template-columns: repeat(1, 1fr); /* 1 item per row on extra small screens */
+  }
+}

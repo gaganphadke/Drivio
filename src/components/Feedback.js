@@ -21,7 +21,6 @@ const Feedback = () => {
       <div className={styles.feedbackHeader}>
         <span className={styles.feedbackIcon}>💬</span>
         <span className={styles.feedbackTitle}>Feedback</span>
-        <button className={styles.closeButton}>✖</button>
       </div>
       <h2>How are you feeling?</h2>
       <p>

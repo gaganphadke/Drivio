@@ -3,9 +3,14 @@ import styles from '../styles/Hero.module.css';
 
 const Hero = () => {
   const [isRoundTrip, setIsRoundTrip] = useState(false);
+  const [selectedButton, setSelectedButton] = useState(null); // State for selected button
 
   const toggleRoundTrip = () => {
     setIsRoundTrip((prev) => !prev);
+  };
+
+  const handleButtonClick = (buttonName) => {
+    setSelectedButton(buttonName); // Update selected button state
   };
 
   return (
@@ -57,14 +62,21 @@ const Hero = () => {
           <div className={styles.actionGroup}>
             <div className={styles.filterGroup}>
               <p style={{ marginRight: '10px' }}>Filter:</p>
-              <button type="button" className={styles.filterButton}>
+              <button
+                type="button"
+                className={`${styles.filterButton} ${selectedButton === 'Without Driver' ? styles.selected : ''}`}
+                onClick={() => handleButtonClick('Without Driver')}
+              >
                 Without Driver
               </button>
-              <button type="button" className={styles.filterButton}>
+              <button
+                type="button"
+                className={`${styles.filterButton} ${selectedButton === 'With Driver' ? styles.selected : ''}`}
+                onClick={() => handleButtonClick('With Driver')}
+              >
                 With Driver
               </button>
             </div>
-
             <div className={styles.searchButtonContainer}>
               <button type="submit" className={styles.searchButton}>
                 Search →
