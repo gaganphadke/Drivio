@@ -3,12 +3,13 @@
   justify-content: flex-start; /* Align to the left */
   align-items: flex-end; /* Align items to the bottom */
   height: 100vh; /* Full viewport height */
+  overflow: hidden; /* Prevent overflow within the container */
   background-image: url('../assets/back.jpg');
   background-size: cover;
   background-position: center;
   padding: 2rem; /* Adjusted padding */
   position: relative; /* Relative positioning for child elements */
-  margin-bottom: 20px; /* Add margin to create space from bottom */
+  background-position: center -20%;
 }
 
 .switchContainer {
@@ -32,6 +33,7 @@
   transition: background 0.3s ease, color 0.3s ease; /* Smooth transitions */
   position: relative; /* For positioning the active state */
   z-index: 1; /* Place above other elements */
+
 }
 
 .switchButton.active {
@@ -45,7 +47,7 @@
 }
 
 .formContainer {
-  background: rgba(255, 255, 255, 0.8);
+  background: #ffffff; /* Solid white background */
   padding: 2rem;
   border-radius: 12px; /* Slightly larger radius for a smoother look */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
@@ -99,6 +101,7 @@
   border-radius: 30px; /* Rounded corners */
   transition: color 0.3s ease; /* Smooth color transition */
   white-space: nowrap; /* Prevent text wrap */
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .formContainer .form button:before {
@@ -126,7 +129,7 @@
 }
 
 .formContainer .form button:hover span {
-  color: white; /* Change text color to white on hover */
+  color: whitesmoke; /* Change text color to white on hover */
 }
 
 .formContainer p {
@@ -200,3 +203,6 @@
 .googleButton:hover {
   background-color: #357ae8;
 }
+
+
+

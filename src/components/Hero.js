@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import styles from '../styles/Hero.module.css';
+import Image from 'next/image';
 
 const Hero = () => {
-  const [isRoundTrip, setIsRoundTrip] = useState(false);
-  const [selectedButton, setSelectedButton] = useState(null); // State for selected button
-
-  const toggleRoundTrip = () => {
-    setIsRoundTrip((prev) => !prev);
-  };
+  const [selectedButton, setSelectedButton] = useState(null);
 
   const handleButtonClick = (buttonName) => {
-    setSelectedButton(buttonName); // Update selected button state
+    if (selectedButton === buttonName) {
+      setSelectedButton(null); // Deselect if already selected
+    } else {
+      setSelectedButton(buttonName); // Select the button
+    }
   };
 
   return (
@@ -18,25 +18,42 @@ const Hero = () => {
       <div className={styles.backgroundImage}></div>
       <div className={styles.content}>
         <h1>Rent a Car for Every Journey</h1>
-        <form className={styles.searchForm}>
+        <form 
+          className={styles.searchForm} 
+          style={{ 
+            width: '120%', // Keep the form full width
+            margin: '0 auto', // Center the form
+            transition: 'width 0.7s ease', // Smooth transition
+            display: 'flex', // Ensure it uses flexbox for alignment
+            flexWrap: 'wrap', // Allow wrapping of input groups
+            gap: '10px', // Space between input groups
+          }}
+        >
           <div className={styles.inputGroup}>
             <label>Departure</label>
-            <input type="text" placeholder="City, airport or station" />
-            <div className={styles.toggleContainer}>
-              <label>
-                Round Trip?
-                <input 
-                  type="checkbox" 
-                  checked={isRoundTrip} 
-                  onChange={toggleRoundTrip} 
-                />
-                <span className={styles.toggleSwitch}></span>
-              </label>
+            <div className={styles.inputWrapper}>
+              <Image 
+                src="/location.png" 
+                alt="Location Icon" 
+                width={20} 
+                height={20} 
+                className={styles.inputIcon} 
+              />
+              <input type="text" placeholder="Enter Location" />
             </div>
           </div>
           <div className={styles.inputGroup}>
             <label>Return Location</label>
-            <input type="text" placeholder="City, airport or station" />
+            <div className={styles.inputWrapper}>
+              <Image 
+                src="/location.png" 
+                alt="Location Icon" 
+                width={20} 
+                height={20} 
+                className={styles.inputIcon} 
+              />
+              <input type="text" placeholder="Enter Location" />
+            </div>
           </div>
           <div className={styles.inputGroup}>
             <label>Pick Up Date</label>
@@ -46,19 +63,14 @@ const Hero = () => {
             <label>Pick Up Time</label>
             <input type="time" />
           </div>
-          {isRoundTrip && (
-            <>
-              <div className={styles.inputGroup}>
-                <label>Return Date</label>
-                <input type="date" />
-              </div>
-              <div className={styles.inputGroup}>
-                <label>Return Time</label>
-                <input type="time" />
-              </div>
-            </>
-          )}
-          {/* Wrap filter buttons and search button in a flex container */}
+          <div className={styles.inputGroup}>
+            <label>Return Date</label>
+            <input type="date" />
+          </div>
+          <div className={styles.inputGroup}>
+            <label>Return Time</label>
+            <input type="time" />
+          </div>
           <div className={styles.actionGroup}>
             <div className={styles.filterGroup}>
               <p style={{ marginRight: '10px' }}>Filter:</p>

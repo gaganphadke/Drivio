@@ -9,7 +9,7 @@ const Deals = () => {
       
       <div className={styles.promotionsContainer}>
         <div className={styles.promotionCard}>
-          <Image src="/promotion1.jpg" alt="Holiday Promotion" layout="fill" objectFit="cover" />
+          <Image src="/promotion1.png" alt="Holiday Promotion" layout="fill" objectFit="cover" />
           <div className={styles.promotionContent}>
             <span className={styles.validDate}>Valid only on 12 Jan - 19 Jan 2024</span>
             <h3>Experience the Holidays with Our Festive Promotions</h3>
@@ -29,15 +29,6 @@ const Deals = () => {
         </div>
       </div>
 
-      <div className={styles.partnerLogos}>
-        <Image src="/hellosign.png" alt="HelloSign" width={100} height={30} />
-        <Image src="/doordash.png" alt="DoorDash" width={100} height={30} />
-        <Image src="/coinbase.png" alt="Coinbase" width={100} height={30} />
-        <Image src="/airtable.png" alt="Airtable" width={100} height={30} />
-        <Image src="/pendo.png" alt="Pendo" width={100} height={30} />
-        <Image src="/treehouse.png" alt="Treehouse" width={100} height={30} />
-      </div>
-
       <div className={styles.vehicleInfoContainer}>
         <div className={styles.comfortZone}>
           <h3>Explore more to get your comfort zone</h3>
@@ -46,7 +37,7 @@ const Deals = () => {
         </div>
         
         <div className={styles.vehicleAvailable}>
-          <Image src="/speedometer.jpg" alt="Speedometer" layout="fill" objectFit="cover" />
+          <Image src="/speedometer.jpeg" alt="Speedometer" layout="fill" objectFit="cover" />
           <div className={styles.vehicleOverlay}>
             <span>Vehicle Available</span>
             <span className={styles.vehicleCount}>3,490</span>

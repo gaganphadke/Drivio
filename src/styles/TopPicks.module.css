@@ -1,94 +1,160 @@
 .topPicksSection {
-  padding: 2rem;
+  padding: 2rem 0; /* Reduced horizontal padding */
   text-align: center;
+  max-width: 1400px; /* Increased max-width for less side gap */
+  margin: 0 auto;
+  margin-left: 77px;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.heading {
+  text-align: left;
+  margin-bottom: 2rem;
 }
 
 .heading h2 {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #000000;
 }
 
 .heading p {
-  color: #666;
-  margin-bottom: 2rem;
+  color: #777;
+  font-size: 1.3rem;
 }
 
 .carsGrid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 columns */
-  gap: 1.5rem; /* Adjust spacing between cards */
-  justify-content: center;
+  grid-template-columns: repeat(4, 1fr); /* 4 cars in a row */
+  gap: 2rem; /* Increased gap between cards */
+  margin-top: 2rem;
 }
 
-.carCard {
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 1rem;
+.carContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   transition: transform 0.3s ease;
+  max-width: 280px; /* Slightly increased width */
+  height: 430px; /* Increased container height */
+  padding-bottom: 60px;
 }
 
-.carCard:hover {
+.carContainer:hover {
   transform: scale(1.05);
 }
 
+.carCard {
+  position: relative;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 300px; /* Further increased height for the container */
+}
+
 .categoryTag {
-  background-color: #e0e0e0;
-  padding: 0.2rem 0.5rem;
-  border-radius: 5px;
-  font-size: 0.8rem;
-  margin-bottom: 0.5rem;
+  position: absolute;
+  top: 12px;
+  left: 12px; /* Positioned to the left corner */
+  background-color: #f5f5f5;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
 }
 
 .carImage {
   width: 100%;
   height: auto;
-  border-radius: 10px;
-  margin-bottom: 1rem;
+  max-width: 240px; /* Increased image width */
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
-/* h3 {
-  font-size: 1.25rem;
-  margin-bottom: 0.5rem;
-} */
+.carDetailsContainer {
+  margin-top: 1rem;
+  text-align: left;
+  width: 100%;
+}
+
+
+.carTitle {
+  font-size: 1.4rem;
+  font-weight: bold;
+}
 
 .transmission {
-  color: #666;
-  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  font-size: 1.1rem;
+  color: #777;
+  margin: 0.3rem 0;
+}
+
+.transmission .icon {
+  margin-right: 0.5rem;
 }
 
 .carDetails {
   display: flex;
-  justify-content: space-around;
-  margin-bottom: 1rem;
+  justify-content: flex-start; /* Align items to the left */
+  margin: 0.2rem 0; /* Decrease the vertical gap between elements */
+}
+
+.carDetails span {
+  display: flex;
+  align-items: center;
+  margin-right: 1rem; /* Optional: add a small right margin between items */
+}
+
+.icon {
+  display: inline-block;
+  margin-right: 0.2rem; /* Reduced space between icon and text */
 }
 
 .priceInfo {
-  font-size: 0.9rem;
-  color: #666;
+  display: flex;
+  align-items: center;
+  font-size: 1.1rem;
+  color: #333;
 }
 
-.price {
-  font-size: 1.1rem;
+.priceInfo .price {
+  font-size: 2rem;
+  color: #ff5c5c;
   font-weight: bold;
-  color: #000;
+  margin-left: 10px;
+  margin-right: 5px;
+}
+
+.perDay {
+  font-size: 1rem;
+  color: #777;
 }
 
 .seeMore {
-  margin-top: 2rem;
+  margin-top: 2.5rem;
 }
 
 .seeMore button {
-  background-color: #000;
-  color: #fff;
+  background-color: #333;
+  color: white;
+  padding: 0.9rem 2.5rem;
+  border-radius: 6px;
+  font-size: 1.1rem;
   border: none;
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
-  border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 .seeMore button:hover {
-  background-color: #444;
+  background-color: #555;
 }

@@ -1,32 +1,56 @@
 .footer {
-    background-color: #1e1e1e; /* Dark background for the footer */
-    padding: 20px 0;
-    color: #ccc; /* Light gray text color */
-    text-align: center;
+  background-color: #1e1e1e; /* Dark background for the footer */
+  padding: 10px 0; /* Reduced padding for a smaller footer */
+  color: #ccc; /* Light gray text color */
+  text-align: center;
+  position: relative; /* Positioning for the gradient border */
+  overflow: hidden; /* Hide overflow to maintain clean edges */
+}
+
+/* Infinite gradient border */
+.footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px; /* Reduced height of the border */
+  background-image: linear-gradient(90deg, #ff0075, #0070f3, #50c878, #ff0075, #0070f3, #50c878); /* Using the previous gradient color */
+  background-size: 400% 100%; /* Stretch the gradient */
+  animation: gradientAnimation 5s ease infinite; /* Animation for infinite effect */
+}
+
+/* Keyframes for the infinite gradient animation */
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 0%;
   }
-  
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  100% {
+    background-position: 100% 0%;
   }
-  
-  .footerNav {
-    margin-top: 10px;
-    display: flex;
-    gap: 15px;
-  }
-  
-  .footerNav a {
-    color: #888; /* Slightly darker gray for links */
-    font-size: 14px;
-    transition: color 0.3s;
-  }
-  
-  .footerNav a:hover {
-    color: #fff; /* Change link color to white on hover */
-  }
-  
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footerNav {
+  margin-top: 5px; /* Reduced margin for nav items */
+  display: flex;
+  gap: 15px;
+}
+
+.footerNav a {
+  color: #888; /* Slightly darker gray for links */
+  font-size: 14px;
+  transition: color 0.3s;
+}
+
+.footerNav a:hover {
+  color: #fff; /* Change link color to white on hover */
+}

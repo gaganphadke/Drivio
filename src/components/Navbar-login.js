@@ -64,9 +64,9 @@ const Navbar = () => {
         </Link>
       </div>
       <ul className={styles.navLinks}>
-        <li><Link href="/browse">Browse Cars</Link></li>
-        <li><Link href="/policies">Rental Policies</Link></li>
-        <li><Link href="/deals">Deals & Discounts</Link></li>
+        <li><Link href="/car-rentals/browse">Browse Cars</Link></li>
+        <li><Link href="/car-rentals/policies">Rental Policies</Link></li>
+        <li><Link href="/car-rentals/deals">Deals & Discounts</Link></li>
         <li><Link href="/feedback">Feedback</Link></li>
       </ul>
       <div className={styles.rightSection}>
@@ -83,14 +83,6 @@ const Navbar = () => {
             </span>
           </span>
         </label>
-        <Link 
-          href="/login-signup" 
-          className={styles.loginButton} 
-           // Apply the dynamic box shadow here
-          // style={{ boxShadow: buttonShadow }}
-        >
-          <span>Sign in</span>
-        </Link>
       </div>
     </nav>
   );

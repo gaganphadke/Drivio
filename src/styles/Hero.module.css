@@ -5,12 +5,11 @@
   color: #fff;
   display: flex;
   align-items: center;
-  justify-content: center;
   overflow: hidden; /* Prevent background image from overflowing */
 }
 
 .backgroundImage {
-  background: url('/images/car-background.jpg') no-repeat center center/cover;
+  background: url('/back3.jpeg') no-repeat center center/cover;
   position: absolute;
   top: 0;
   left: 0;
@@ -23,36 +22,37 @@
 .content {
   position: relative;
   z-index: 2;
-  text-align: center;
-  width: 90%;
-  max-width: 1200px;
+  text-align: left; /* Align heading text to the left */
+  max-width: 1200px; /* Maintain max width */
+  margin-top: 80px; /* Margin to move heading down */
+  margin-left: 15px;
 }
 
 .content h1 {
-  font-size: 3rem;
-  margin-bottom: 2rem;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Add shadow for better readability */
+  font-size: 4.6rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  padding-top: 100px; /* You can adjust this value for more space */
+  margin-bottom: 20px;
+  text-align: left;
+  margin-top: 200px;
 }
 
 .searchForm {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 10px; /* Space between input fields */
   background: rgba(255, 255, 255, 0.15);
-  padding: 30px;
+  padding: 20px;
   border-radius: 15px;
-  width: 100%;
-  margin: 0 auto;
-  backdrop-filter: blur(10px); /* Add a blur effect to the background */
+  backdrop-filter: blur(10px);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
 }
 
 .inputGroup {
-  flex: 1 1 calc(33.333% - 20px); /* Adjust for 3 columns, accounting for gap */
-  min-width: 200px; /* Minimum width for responsiveness */
+  flex: 1 1 calc(16.66% - 20px); /* Shrink input fields to fit 6 in one row */
+  min-width: 150px; /* Minimum width for each input field */
   display: flex;
   flex-direction: column;
-  max-width: 300px;
 }
 
 .inputGroup label {
@@ -61,64 +61,32 @@
   font-weight: bold;
 }
 
+
 .inputGroup input {
-  padding: 12px;
+  padding: 10px 10px 10px 40px;
   border-radius: 8px;
   border: 1px solid rgba(255, 255, 255, 0.3);
   background: rgba(255, 255, 255, 0.1);
   color: #fff;
   font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .inputGroup input::placeholder {
   color: rgba(255, 255, 255, 0.7);
 }
 
-.toggleContainer {
-  display: flex;
-  align-items: center;
-  margin-top: 10px;
-}
-
-.toggleContainer label {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  font-size: 0.9rem;
-}
-
-.toggleContainer input[type="checkbox"] {
-  display: none;
-}
-
-.toggleSwitch {
-  width: 40px;
-  height: 20px;
-  background-color: rgba(255, 255, 255, 0.3);
-  border-radius: 20px;
+.inputWrapper {
   position: relative;
-  transition: background-color 0.3s;
-  margin-left: 10px;
 }
 
-.toggleSwitch::before {
-  content: '';
-  width: 16px;
-  height: 16px;
-  background-color: white;
-  border-radius: 50%;
+.inputIcon {
   position: absolute;
-  top: 2px;
-  left: 2px;
-  transition: transform 0.3s;
-}
-
-.toggleContainer input[type="checkbox"]:checked + .toggleSwitch {
-  background-color: #0070f3;
-}
-
-.toggleContainer input[type="checkbox"]:checked + .toggleSwitch::before {
-  transform: translateX(20px);
+  left: 10px; /* Consistent icon placement */
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
 }
 
 .actionGroup {
@@ -126,13 +94,14 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
 .filterGroup {
   display: flex;
   gap: 10px;
   align-items: center;
+  margin-left: 10px;
 }
 
 .filterGroup p {
@@ -143,17 +112,18 @@
 
 .filterButton {
   background: rgba(0, 0, 0, 0.5);
-  color: #fff;
+  color: #ffffff;
   padding: 10px 20px;
-  border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 17px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
   cursor: pointer;
   transition: background-color 0.3s, transform 0.1s;
 }
 
 .filterButton:hover {
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 81, 255, 0.788);
   transform: translateY(-2px);
+  color: whitesmoke;
 }
 
 .searchButtonContainer {
@@ -187,8 +157,12 @@
     padding: 20px;
   }
 
+  .inputGroup input {
+    width: 100%; /* Full width for inputs on smaller screens */
+  }
+
   .inputGroup {
-    flex: 1 1 100%;
+    flex: 1 1 100%; /* Full width for input groups on smaller screens */
   }
 
   .actionGroup {
@@ -202,19 +176,20 @@
 
   .searchButtonContainer {
     width: 100%;
+    justify-content: center;
   }
 
   .searchButton {
     width: 100%;
   }
 }
+
 .hero {
   position: relative;
   height: 100vh;
   color: #fff;
   display: flex;
   align-items: center;
-  justify-content: center;
   overflow: hidden;
 }
 
@@ -234,7 +209,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5);  /* Darkens the image */
+  background: rgba(0, 0, 0, 0.5); /* Darkens the image */
 }
 
 .content {
@@ -244,7 +219,26 @@
   width: 90%;
   max-width: 1200px;
 }
+
 .selected {
-  background-color: blue; /* Color when selected */
+  background-color: rgba(0, 67, 213, 0.7); /* Color when selected */
   color: white; /* Text color when selected */
+}
+
+@media (max-width: 1200px) {
+  .inputGroup {
+    flex: 1 1 calc(25% - 20px); /* 4 inputs per row on smaller screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .inputGroup {
+    flex: 1 1 calc(50% - 20px); /* 2 inputs per row on tablets */
+  }
+}
+
+@media (max-width: 480px) {
+  .inputGroup {
+    flex: 1 1 100%; /* Full width inputs on smaller screens */
+  }
 }

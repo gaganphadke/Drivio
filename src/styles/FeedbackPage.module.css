@@ -1,18 +1,23 @@
 .pageWrapper {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
+  background-image: url('/back3.jpg'); /* Set the background image */
+  background-size: cover; /* Cover the entire page */
+  background-position: center; /* Center the image */
+  height: 100vh; /* Set height to full viewport height */
+  display: flex; /* Use flexbox to align children */
+  flex-direction: column; /* Column direction */
+  justify-content: flex-start; /* Align children to the top */
+}
   
   .feedbackContainer {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex-grow: 1; /* Ensures this container takes all available vertical space */
-    margin: 50px 0; /* Optional: Adjust margin if necessary */
-    width: 80%; /* Increases the width of the feedback container */
-    max-width: 900px; /* Set a max-width for larger screens */
-    margin: 0 auto; /* Center horizontally */
+    flex-grow: 1; 
+    margin: 50px 0; 
+    width: 80%; 
+    max-width: 900px;
+    margin: 0 auto; 
+    margin-left: -50px;
   }
   

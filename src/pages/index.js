@@ -11,7 +11,6 @@ export default function Home() {
   return (
     <>
       <Navbar/>
-      {/* <Navbar/> */}
       <Hero />
       <TopPicks />
       <PopularDestinations/>

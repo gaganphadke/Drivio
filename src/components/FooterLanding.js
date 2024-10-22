@@ -7,8 +7,7 @@ const FooterLanding = () => {
     <footer className={styles.footer}>
       <div className={styles.footerContent}>
         <div className={styles.brand}>
-          <Image src="/horizone-logo.png" alt="Horizone Logo" width={30} height={30} />
-          <h2 className={styles.brandName}>Horizone</h2>
+          <Image src="/logo.png"  width={140} height={55} />
           <p className={styles.mission}>
             Our mission is to equip modern explorers with cutting-edge, functional, and stylish bags that elevate every adventure.
           </p>
@@ -19,8 +18,6 @@ const FooterLanding = () => {
             <h3>About</h3>
             <ul>
               <li><a href="/about-us">About Us</a></li>
-              <li><a href="/blog">Blog</a></li>
-              <li><a href="/career">Career</a></li>
             </ul>
           </div>
 
@@ -28,8 +25,6 @@ const FooterLanding = () => {
             <h3>Support</h3>
             <ul>
               <li><a href="/contact-us">Contact Us</a></li>
-              <li><a href="/return">Return</a></li>
-              <li><a href="/faq">FAQ</a></li>
             </ul>
           </div>
 
@@ -40,21 +35,19 @@ const FooterLanding = () => {
               <button className={styles.subscribeButton}>Subscribe</button>
             </div>
             <div className={styles.socialIcons}>
-              <a href="#" className={styles.socialIcon}><Image src="/instagram-icon.png" alt="Instagram" width={24} height={24} /></a>
-              <a href="#" className={styles.socialIcon}><Image src="/twitter-icon.png" alt="Twitter" width={24} height={24} /></a>
-              <a href="#" className={styles.socialIcon}><Image src="/facebook-icon.png" alt="Facebook" width={24} height={24} /></a>
-              <a href="#" className={styles.socialIcon}><Image src="/discord-icon.png" alt="Discord" width={24} height={24} /></a>
-              <a href="#" className={styles.socialIcon}><Image src="/tiktok-icon.png" alt="TikTok" width={24} height={24} /></a>
+              <a href="#" className={styles.socialIcon}><Image src="/instagram.png" alt="Instagram" width={24} height={24} /></a>
+              <a href="#" className={styles.socialIcon}><Image src="/twitter.png" alt="Twitter" width={24} height={24} /></a>
+              <a href="#" className={styles.socialIcon}><Image src="/facebook.png" alt="Facebook" width={24} height={24} /></a>
+              <a href="#" className={styles.socialIcon}><Image src="/discord.png" alt="Discord" width={24} height={24} /></a>
             </div>
           </div>
         </div>
       </div>
 
       <div className={styles.footerBottom}>
-        <p>&copy;2024 Horizone. All rights reserved.</p>
+        <p>&copy;2024 DriveIO. All rights reserved.</p>
         <div className={styles.legalLinks}>
-          <a href="/privacy-policy">Privacy Policy</a>
-          <a href="/terms-of-service">Terms of Service</a>
+          <a href="/policies">Privacy Policy</a>
         </div>
       </div>
     </footer>

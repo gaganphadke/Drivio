@@ -1,12 +1,11 @@
-import Header from '../components/Header';
 import Footer from '../components/Footer';
-import Navbar from '../components/Navbar';
 import AdminDashboard from '../components/AdminDashboard';  // Import the AdminDashboard component
+import Navbar from '@/components/Navbar-no-float';
 
 const AdminPage = () => {
   return (
     <>
-      <Navbar />          {/* Reuse Navbar */}
+      <Navbar />
       <AdminDashboard />   {/* Admin Dashboard Component */}
       <Footer />           {/* Reuse Footer */}
     </>

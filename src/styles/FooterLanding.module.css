@@ -1,118 +1,142 @@
 .footer {
-    background-color: #1a1a1a;
-    color: #ffffff;
-    padding: 40px 60px;
-    font-family: Arial, sans-serif;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  padding: 40px 60px;
+  font-family: Arial, sans-serif;
+  user-select: none;
+  -webkit-user-select: none;
+  position: relative;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 4px; /* Height of the gradient border */
+  background-image: linear-gradient(90deg, #ff0075, #0070f3, #50c878, #ff0075, #0070f3, #50c878); /* Repeating the colors */
+  background-size: 200% 100%; /* Adjust to ensure smooth transition */
+  animation: moveGradient 5s linear infinite; /* Slower animation for smooth effect */
+}
+
+@keyframes moveGradient {
+  0% {
+    background-position: 0% 50%;
   }
-  
-  .footerContent {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 40px;
+  100% {
+    background-position: 100% 50%;
   }
-  
-  .brand {
-    max-width: 300px;
-  }
-  
-  .brandName {
-    font-size: 24px;
-    margin: 10px 0;
-  }
-  
-  .mission {
-    font-size: 14px;
-    line-height: 1.5;
-    color: #b0b0b0;
-  }
-  
-  .links {
-    display: flex;
-    gap: 60px;
-  }
-  
-  .linkColumn h3 {
-    font-size: 18px;
-    margin-bottom: 20px;
-  }
-  
-  .linkColumn ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .linkColumn li {
-    margin-bottom: 10px;
-  }
-  
-  .linkColumn a {
-    color: #b0b0b0;
-    text-decoration: none;
-    font-size: 14px;
-  }
-  
-  .linkColumn a:hover {
-    color: #ffffff;
-  }
-  
-  .newsletter h3 {
-    font-size: 18px;
-    margin-bottom: 20px;
-  }
-  
-  .subscribeForm {
-    display: flex;
-    margin-bottom: 20px;
-  }
-  
-  .emailInput {
-    padding: 10px;
-    border: none;
-    border-radius: 4px 0 0 4px;
-    background-color: #333333;
-    color: #ffffff;
-    flex-grow: 1;
-  }
-  
-  .subscribeButton {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 0 4px 4px 0;
-    background-color: #ffffff;
-    color: #1a1a1a;
-    cursor: pointer;
-  }
-  
-  .socialIcons {
-    display: flex;
-    gap: 15px;
-  }
-  
-  .socialIcon {
-    background-color: #333333;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .footerBottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 20px;
-    border-top: 1px solid #333333;
-    font-size: 14px;
-  }
-  
-  .legalLinks a {
-    color: #b0b0b0;
-    text-decoration: none;
-    margin-left: 20px;
-  }
-  
-  .legalLinks a:hover {
-    color: #ffffff;
-  }
+}
+
+.footerContent {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.brand {
+  max-width: 300px;
+}
+
+.brandName {
+  font-size: 24px;
+  margin: 10px 0;
+}
+
+.mission {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #b0b0b0;
+}
+
+.links {
+  display: flex;
+  gap: 60px;
+}
+
+.linkColumn h3 {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.linkColumn ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.linkColumn li {
+  margin-bottom: 10px;
+}
+
+.linkColumn a {
+  color: #b0b0b0;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.linkColumn a:hover {
+  color: #ffffff;
+}
+
+.newsletter h3 {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.subscribeForm {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.emailInput {
+  padding: 10px;
+  border: none;
+  border-radius: 4px 0 0 4px;
+  background-color: #333333;
+  color: #ffffff;
+  flex-grow: 1;
+}
+
+.subscribeButton {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  background-color: #ffffff;
+  color: #1a1a1a;
+  cursor: pointer;
+}
+
+.socialIcons {
+  display: flex;
+  gap: 15px;
+}
+
+.socialIcon {
+  margin-left: 14px;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footerBottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+  border-top: 1px solid #333333;
+  font-size: 14px;
+}
+
+.legalLinks a {
+  color: #b0b0b0;
+  text-decoration: none;
+  margin-left: 20px;
+}
+
+.legalLinks a:hover {
+  color: #ffffff;
+}

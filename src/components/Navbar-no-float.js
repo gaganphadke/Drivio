@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image'; // Import Next.js Image component
-import styles from '../styles/Navbar.module.css';
+import styles from '../styles/Navbar-no-float.module.css';
 
 import sunIcon from '../assets/sun.png'; // Adjust path as necessary
 import moonIcon from '../assets/moon.png'; // Adjust path as necessary
