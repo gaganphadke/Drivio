@@ -30,3 +30,22 @@ body.dark {
   background-color: var(--navbar-bg);
   color: var(--navbar-text);
 }
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px; /* Width of the scrollbar */
+  height: 10px; /* Height of the scrollbar for horizontal scrollbars */
+}
+
+::-webkit-scrollbar-track {
+  background: transparent; /* Background of the scrollbar track */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #6a5af9; /* Color of the scrollbar thumb */
+  border-radius: px; /* Rounded corners for the thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #5b4cbf; /* Darker color on hover */
+}
