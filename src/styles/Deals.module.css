@@ -1,113 +1,149 @@
 .dealsContainer {
-    padding: 20px;
-    font-family: Arial, sans-serif;
-  }
-  
-  .dealsTitle {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  
-  .seeAll {
-    font-size: 14px;
-    color: #666;
-    cursor: pointer;
-  }
-  
-  .promotionsContainer {
-    display: flex;
-    gap: 20px;
-    margin-bottom: 20px;
-  }
-  
-  .promotionCard {
-    position: relative;
-    width: 50%;
-    height: 200px;
-    border-radius: 10px;
-    overflow: hidden;
-  }
-  
-  .promotionContent {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  
-  .validDate {
-    font-size: 12px;
-  }
-  
-  .discountPercentage {
-    font-size: 48px;
-    font-weight: bold;
-  }
-  
-  .termsCondition {
-    font-size: 10px;
-  }
-  
-  .partnerLogos {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-  }
-  
-  .vehicleInfoContainer {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-  }
-  
-  .comfortZone, .vehicleAvailable, .memories {
-    position: relative;
-    height: 200px;
-    border-radius: 10px;
-    overflow: hidden;
-  }
-  
-  .comfortZone {
-    background-color: #f0f0f0;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  
-  .bookingButton {
-    background-color: #000;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .vehicleOverlay, .memoriesOverlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-  }
-  
-  .vehicleCount {
-    font-size: 24px;
-    font-weight: bold;
-  }
-  
-  .memories {
-    grid-column: span 2;
-  }
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.dealsTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.seeAll {
+  font-size: 14px;
+  color: #666;
+  cursor: pointer;
+}
+
+.promotionsContainer {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.promotionCard {
+  position: relative;
+  width: 50%;
+  height: 200px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.promotionContent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.validDate {
+  font-size: 12px;
+}
+
+.discountPercentage {
+  font-size: 48px;
+  font-weight: bold;
+}
+
+.termsCondition {
+  font-size: 10px;
+}
+
+.partnerLogos {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.vehicleInfoContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.comfortZone,
+.vehicleAvailable,
+.memories {
+  position: relative;
+  height: 200px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.vehicleAvailable {
+  height: 200px;
+}
+
+.comfortZone {
+  background-color: #f0f0f0;
+  padding: 10px; /* Reduced padding */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-height: 180px; /* Decreased max-height */
+  overflow: hidden; /* Prevent overflow */
+}
+
+
+.comfortZone h3 p {
+  margin: 0px;
+}
+
+.comfortZone h3 {
+  margin-top: 0px;
+  margin-bottom: 30px;
+  font-size:35px; /* Reduced font size */
+  flex-shrink: 0; /* Prevents heading from shrinking */
+}
+
+.comfortZone p {
+  margin-top: 0px;
+  font-size:20px; /* Reduced font size */
+  margin-bottom: 35px;
+}
+
+.bookingButton {
+  background-color: #000;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 40px;
+}
+
+.vehicleOverlay,
+.memoriesOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+}
+
+.vehicleCount {
+  font-size: 24px;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.memories {
+  grid-column: span 2;
+}
+
+.memoriesOverlay h3{
+  font-size: 30px;
+  margin: 0;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

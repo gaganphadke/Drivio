@@ -4,12 +4,12 @@
   align-items: flex-end; /* Align items to the bottom */
   height: 100vh; /* Full viewport height */
   overflow: hidden; /* Prevent overflow within the container */
-  background-image: url('../assets/back.jpg');
+  background-image: url('../assets/back.jpeg');
   background-size: cover;
   background-position: center;
   padding: 2rem; /* Adjusted padding */
   position: relative; /* Relative positioning for child elements */
-  background-position: center -20%;
+  background-position: center 100%;
 }
 
 .switchContainer {
@@ -33,7 +33,7 @@
   transition: background 0.3s ease, color 0.3s ease; /* Smooth transitions */
   position: relative; /* For positioning the active state */
   z-index: 1; /* Place above other elements */
-
+  
 }
 
 .switchButton.active {
@@ -47,14 +47,15 @@
 }
 
 .formContainer {
-  background: #ffffff; /* Solid white background */
+  margin-top: 45px;
+  background: rgba(255, 255, 255, 0.6); /* Solid white background */
   padding: 2rem;
   border-radius: 12px; /* Slightly larger radius for a smoother look */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   width: 300px;
   text-align: center;
-  margin-bottom: 70px; /* Adjust margin for alignment */
-  margin-left: 50px;
+  align-self: center;
+  margin-left: 560px;
 }
 
 .formContainer .title {
@@ -198,6 +199,8 @@
   margin-top: 10px;
   border-radius: 5px;
   cursor: pointer;
+  margin-top: 35px;
+  margin-bottom: 0;
 }
 
 .googleButton:hover {
