@@ -6,8 +6,8 @@ const AdminPage = () => {
   return (
     <>
       <Navbar />
-      <AdminDashboard />   {/* Admin Dashboard Component */}
-      <Footer />           {/* Reuse Footer */}
+      <AdminDashboard />   
+      <Footer />           
     </>
   );
 };

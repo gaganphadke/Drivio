@@ -1,26 +1,39 @@
-.footer {
-  background-color: #1e1e1e; /* Dark background for the footer */
-  padding: 10px 0; /* Reduced padding for a smaller footer */
-  color: #ccc; /* Light gray text color */
-  text-align: center;
-  position: relative; /* Positioning for the gradient border */
-  overflow: hidden; /* Hide overflow to maintain clean edges */
+/* Ensure the wrapper takes the full viewport height */
+.pageWrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensures page takes up at least the full viewport */
 }
 
-/* Infinite gradient border */
+/* Main content section: make it flex-grow to push the footer to the bottom */
+.content {
+  flex: 1; /* Allows content to grow and take up space */
+  padding: 20px;
+}
+
+/* Footer styles */
+.footer {
+  background-color: #1e1e1e;
+  padding: 10px 0;
+  color: #ccc;
+  text-align: center;
+  position: relative; /* For the gradient border */
+  overflow: hidden; /* Clean edges */
+  width: 100%;
+}
+
 .footer::before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  height: 5px; /* Reduced height of the border */
-  background-image: linear-gradient(90deg, #ff0075, #0070f3, #50c878, #ff0075, #0070f3, #50c878); /* Using the previous gradient color */
-  background-size: 400% 100%; /* Stretch the gradient */
-  animation: gradientAnimation 5s ease infinite; /* Animation for infinite effect */
+  height: 5px; /* Height of the gradient */
+  background-image: linear-gradient(90deg, #ff0075, #0070f3, #50c878, #ff0075, #0070f3, #50c878);
+  background-size: 400% 100%;
+  animation: gradientAnimation 5s ease infinite;
 }
 
-/* Keyframes for the infinite gradient animation */
 @keyframes gradientAnimation {
   0% {
     background-position: 0% 0%;
@@ -40,17 +53,23 @@
 }
 
 .footerNav {
-  margin-top: 5px; /* Reduced margin for nav items */
+  margin-top: 5px;
   display: flex;
   gap: 15px;
 }
 
 .footerNav a {
-  color: #888; /* Slightly darker gray for links */
+  color: #888;
   font-size: 14px;
   transition: color 0.3s;
 }
 
 .footerNav a:hover {
-  color: #fff; /* Change link color to white on hover */
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 20px 0;
+  }
 }

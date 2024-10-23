@@ -1,148 +1,393 @@
 /* Dashboard container */
 .dashboard {
-    display: flex;
-    height: 100vh;
-  }
-  
-  /* Sidebar */
-  .sidebar {
-    width: 250px;
-    background-color: #f8f9fc;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  
-  .sidebar h2,
-  .sidebar h3 {
-    margin-bottom: 20px;
-    font-weight: 700;
-  }
-  
-  .sidebar ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .sidebar ul li {
-    margin-bottom: 15px;
-    font-weight: 500;
-    cursor: pointer;
-  }
-  
-  .active {
-    color: #6a5af9;
-  }
-  
-  .sellCarBtn {
-    background-color: #6a5af9;
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    width: 100%;
-    margin-top: 20px;
-  }
-  
-  /* Main Content */
-  .mainContent {
-    flex: 1;
-    padding: 20px;
-    background-color: #f1f3f7;
-  }
-  
-  .header {
-    background-color: white;
-    padding: 30px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-  }
-  
-  .header h1 {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-  
-  .exploreButton {
-    background-color: #6a5af9;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    margin-top: 10px;
-  }
-  
-  .carListings {
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-  }
-  
-  .listingTable {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .listingTable th, .listingTable td {
-    padding: 15px;
-    text-align: left;
-    border-bottom: 1px solid #e0e0e0;
-  }
-  
-  .ongoing {
-    color: #6a5af9;
-  }
-  
-  .finished {
-    color: #28a745;
-  }
-  
-  .canceled {
-    color: #dc3545;
-  }
-  
-  /* Right Sidebar */
-  .rightSidebar {
-    width: 300px;
-    background-color: #f8f9fc;
-    padding: 20px;
-  }
-  
-  .profileCard {
-    text-align: center;
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-  }
-  
-  .profileImage {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    margin-bottom: 10px;
-  }
-  
-  .metrics {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .metricCard {
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    margin-bottom: 10px;
-  }
-  
-  .metricCard h3 {
-    font-size: 16px;
-    margin-bottom: 5px;
-  }
-  
-  .metricCard span {
-    color: #6c757d;
-  }
-  
+  display: flex;
+  height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  background-color: #f8f9fc;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%; /* Full height */
+  overflow-y: auto; /* Enable scrolling */
+  padding-bottom: 50px; /* Add padding at the bottom */
+}
+
+.sidebar::-webkit-scrollbar {
+  width: 8px; /* Customize scrollbar width */
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background-color: rgba(106, 90, 249, 0.5); /* Color of scrollbar */
+  border-radius: 10px; /* Rounded edges */
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background-color: #f1f3f7; /* Track color */
+}
+
+.sidebar h2,
+.sidebar h3 {
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  margin-bottom: 15px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.active {
+  color: #8C1AF6;
+}
+
+.sellCarBtn {
+  background-color: #6a5af9;
+  color: white;
+  border: none;
+  padding: 12px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 20px;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.naText {
+  color: rgb(183, 181, 181);
+}
+
+.sellCarBtn:hover{
+  background-color: #4235ba;
+}
+
+/* Main Content */
+.mainContent {
+  flex: 1;
+  padding: 20px;
+  background-color: #f1f3f7;
+  overflow-y: hidden; /* Prevent overflow if not necessary */
+}
+
+
+.header {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.header h1 {
+  font-size: 35px;
+  margin-bottom: 50px;
+}
+
+.header p{
+  font-size: 20px;
+}
+
+.exploreButton {
+  background-color: #6a5af9;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 30px;
+  margin-top: 10px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+}
+
+.exploreButton:hover{
+  background-color: #4235ba;
+}
+
+.carListings {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  max-height: 250px; /* Set max height for scrolling */
+  overflow-y: auto; /* Allow scrolling for overflowing content */
+}
+
+
+.carListings::-webkit-scrollbar {
+  width: 8px; /* Customize scrollbar width */
+}
+
+.carListings::-webkit-scrollbar-thumb {
+  background-color: rgba(106, 90, 249, 0.5); /* Color of scrollbar */
+  border-radius: 10px; /* Rounded edges */
+}
+
+.carListings::-webkit-scrollbar-track {
+  background-color: #f1f3f7; /* Track color */
+}
+
+.listingTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.listingTable th,
+.listingTable td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.ongoing {
+  color: #6a5af9;
+  background-color: rgba(106, 90, 249, 0.3);
+  justify-content: center;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  height: 30px;
+  border-radius: 10px;
+}
+
+.finished {
+  color: #28a745;
+  background-color: rgba(24, 224, 107, 0.3);
+  justify-content: center;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  height: 30px;
+  border-radius: 10px;
+}
+
+.canceled {
+  color: #dc3545;
+  background-color: rgba(239, 80, 80, 0.3);
+  justify-content: center;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  height: 30px;
+  border-radius: 10px;
+}
+
+/* Right Sidebar */
+.rightSidebar {
+  width: 300px;
+  background-color: #f8f9fc;
+  padding: 20px;
+}
+
+.profileCard {
+  text-align: center;
+  background-color: white;
+  padding: 10px 20px; /* Reduce vertical padding */
+  border-radius: 20px; /* Keep the same border radius */
+  margin-bottom: 10px; /* Keep the same bottom margin */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Optional: lighter shadow */
+}
+
+
+.profileImage {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.metrics {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0; /* Ensure no top margin on the metrics container */
+}
+
+.metricCard {
+  display: flex; /* Use flexbox for layout */
+  align-items: center; /* Center items vertically */
+  justify-content: space-between; /* Space between text and image */
+  background-color: white;
+  padding: 20px;
+  border-radius: 30px;
+  margin-bottom: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.metricCard h3 {
+  font-size: 16px;
+  margin: 0; /* Remove default margin on the heading */
+}
+
+.metricCard p, .metricCard span {
+  margin: 0; /* Remove margin for consistent spacing */
+}
+
+
+.metricImage {
+  width: 80px; /* Set a specific width for the images */
+  height: auto; /* Maintain aspect ratio */
+  margin-left: 10px; /* Space between text and image */
+  margin: 0px;
+}
+
+.metricCard span {
+  color: #6c757d;
+}
+
+.metricText {
+  display: flex; /* Allow stacking of h3, p, and span */
+  flex-direction: column; /* Stack elements vertically */
+}
+
+.metricCard h3,
+.metricCard p,
+.metricCard span {
+  margin: 0; /* Remove default margin */
+  padding-right: 10px; /* Optional: Add some space between text and image */
+}
+
+.editButton {
+  appearance: none;
+  background-color: #6a5af9;
+  border: none; /* No border */
+  color: #ffffff; /* Initial text color */
+  cursor: pointer; /* Pointer cursor */
+  line-height: 1em; /* Line height */
+  margin: 0; /* Reset margin */
+  padding: 1em 2.2em; /* Padding */
+  position: relative; /* For absolute positioning of pseudo-elements */
+  text-align: center; /* Center text */
+  text-transform: uppercase; /* Uppercase text */
+  overflow: hidden; /* Ensure the filling does not overflow */
+  border-radius: 30px; /* Rounded corners */
+  white-space: nowrap; /* Prevent text wrap */
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+  margin-bottom: 8px;
+}
+
+.editButton:hover{
+  background-color: #4235ba;
+}
+
+.footer {
+  background-color: #1e1e1e;
+  color: #ccc;
+  text-align: center;
+  padding: 10px;
+}
+
+.sidebarItem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.sidebarItem:hover,
+.active {
+  background-color: #efefef;
+}
+
+.icon {
+  margin-right: 10px;
+}
+
+.sellCarContainer {
+  background-color: #f3f3f3;
+  padding: 20px;
+  border-radius: 15px;
+  margin-top: 20px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.sellIcon {
+  height: 30px;
+  width: 30px;  
+}
+
+.settingsBtn {
+  padding-bottom: 50px;
+}
+
+.settings {
+  background-color:whitesmoke;
+  border: none;
+  color: #6a5af9;
+  cursor: pointer;
+  width: 100%;
+  padding: 10px 0;
+  border-radius: 10px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: black;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.settings:hover{
+  background-color: rgb(15, 7, 61);
+
+}
+
+.settings img {
+  margin-right: 10px;
+}
+
+.cart{
+  background-color: rgba(106, 90, 249, 0.5);
+  border-radius: 50%;
+  width: 60px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  margin-left: 70px;
+  height: 60px;
+}
+
+.header {
+  display: flex; /* Enable flexbox */
+  align-items: center; /* Align items vertically */
+  justify-content: space-between; /* Space between text and image */
+}
+
+.headerContent {
+  /* Add some margin if needed to keep space between the text and image */
+  margin-right: 20px; /* Adjust this value as needed */
+}
+
+.metricText h3{
+  margin-top: 0;
+  margin-bottom:16px;
+  font-size: 25px;
+}
+
+.metricText p{
+  margin-top: 0;
+  margin-bottom: 7px;
+}
+
+.turnover{
+  color:#6a5af9;
+}
+
+.outcome{
+  color: #dc3545;
+}
+
+.income{
+  color: #28a745;
+}
+
