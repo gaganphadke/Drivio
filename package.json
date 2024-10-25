@@ -9,6 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
+    "@heroicons/react": "^2.1.5",
+    "@mui/icons-material": "^6.1.4",
+    "@mui/material": "^6.1.4",
+    "@paypal/react-paypal-js": "^8.7.0",
+    "@radix-ui/react-alert-dialog": "^1.1.2",
     "clsx": "^2.1.1",
     "firebase": "^10.14.1",
     "framer-motion": "^11.11.9",

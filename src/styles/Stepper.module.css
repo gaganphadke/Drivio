@@ -1,0 +1,32 @@
+/* Stepper.module.css */
+.stepperContainer {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+  }
+  
+  .step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .step span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: lightgray;
+    color: #fff;
+  }
+  
+  .step.active span {
+    background-color: #5a67d8; /* purple */
+  }
+  
+  .step p {
+    margin-top: 10px;
+  }
+  

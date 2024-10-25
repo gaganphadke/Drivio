@@ -83,7 +83,7 @@ body.light {
 
 /* Dark Mode Variables */
 body.dark {
-    --navbar-bg: #1e1e1e;
-    --navbar-text: #fff;
+    --navbar-bg: #ffffff;
+    --navbar-text: #000000;
     --link-color: #fff;
 }

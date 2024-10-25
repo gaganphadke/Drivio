@@ -40,7 +40,7 @@ const Navbar = () => {
         </button>
         <span className={styles.searchButton}>🔍</span>
         <span className={styles.language}>EN</span>
-        <Link href="/login" className={styles.loginLink}>Log In</Link>
+        <Link href="/login-signup" className={styles.loginLink}>Log In</Link>
         <button className={styles.signUpButton}>Sign Up</button>
       </div>
     </nav>

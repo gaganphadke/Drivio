@@ -22,7 +22,7 @@ body {
 /* Dark mode styles */
 body.dark {
     --navbar-bg: #1e1e1e;
-    --navbar-text: #fff;
+    --navbar-text: rgb(173, 166, 166);
     --link-color: #fff;
     background-color: var(--navbar-bg);
     color: var(--navbar-text);
