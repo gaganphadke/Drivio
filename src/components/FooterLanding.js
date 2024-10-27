@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styles from '../styles/FooterLanding.module.css';
 import Image from 'next/image';
 import emailjs from 'emailjs-com';
-import { EMAILJS_USER_ID, EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID } from './config.js'
+// import { EMAILJS_USER_ID, EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID } from './config.js'
 
 const FooterLanding = () => {
   const [email, setEmail] = useState('');

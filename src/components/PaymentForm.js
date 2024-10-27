@@ -99,7 +99,7 @@ const PaymentForm = ({ nextStep, prevStep, userData }) => {
         </div>
 
         {/* Book Information Section */}
-        {/* <div className={styles.bookInfo}>
+        <div className={styles.bookInfo}>
           <h3>Book Information</h3>
           <p><strong>Congratulations!</strong> We have sent your booking details to the vehicle owner.</p>
           <div>
@@ -107,7 +107,7 @@ const PaymentForm = ({ nextStep, prevStep, userData }) => {
             <p><strong>Email:</strong> {email}</p>
             <p><strong>Phone Number:</strong> {phone}</p>
           </div>
-        </div> */}
+        </div>
 
         <div className={styles.bookInfo}>
           <h3>Booking Information</h3>
