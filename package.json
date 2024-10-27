@@ -9,12 +9,17 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@paypal/react-paypal-js": "^8.7.0",
+    "canvas-confetti": "^1.9.3",
     "clsx": "^2.1.1",
+    "emailjs-com": "^3.2.0",
     "firebase": "^10.14.1",
     "framer-motion": "^11.11.9",
     "next": "14.2.15",
     "react": "^18",
+    "react-confetti": "^6.1.0",
     "react-dom": "^18",
+    "sib-api-v3-sdk": "^8.5.0",
     "tailwind-merge": "^2.5.4"
   },
   "devDependencies": {

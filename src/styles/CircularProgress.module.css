@@ -1,0 +1,41 @@
+/* .statItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    width: 120px;
+  } */
+  
+  .progressCircle {
+    transform: rotate(-90deg);
+  }
+  
+  .circleBackground {
+    fill: none;
+    stroke: #e0e0e0;
+  }
+  
+  .circleProgress {
+    fill: none;
+    stroke: #f56500; /* Adjust color as needed */
+    transition: stroke-dashoffset 0.6s ease;
+    stroke-linecap: round;
+  }
+
+  .can{
+    color: #9f9f9f;
+    margin-top: 0;
+  }
+
+  .title{
+    margin-top: 5px;
+    margin-bottom: 0px;
+  }
+  
+  .percen{
+    font-size: 30px;
+    margin-top: 0;
+    margin-bottom: 18px;
+  }

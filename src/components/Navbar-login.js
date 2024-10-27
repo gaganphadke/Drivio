@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image'; // Import Next.js Image component
-import styles from '../styles/Navbar.module.css';
+import styles from '../styles/Navbar-login.module.css';
 
 import sunIcon from '../assets/sun.png'; // Adjust path as necessary
 import moonIcon from '../assets/moon.png'; // Adjust path as necessary
@@ -64,9 +64,9 @@ const Navbar = () => {
         </Link>
       </div>
       <ul className={styles.navLinks}>
-        <li><Link href="/car-rentals/browse">Browse Cars</Link></li>
-        <li><Link href="/car-rentals/policies">Rental Policies</Link></li>
-        <li><Link href="/car-rentals/deals">Deals & Discounts</Link></li>
+        <li><Link href="/browse">Browse Cars</Link></li>
+        <li><Link href="/policies">Rental Policies</Link></li>
+        <li><Link href="/deals">Deals & Discounts</Link></li>
         <li><Link href="/feedback">Feedback</Link></li>
       </ul>
       <div className={styles.rightSection}>

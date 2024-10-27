@@ -1,135 +1,339 @@
 .carDetailContainer {
-    background-color: #f5f5f5;
-    padding: 20px;
-    border-radius: 10px;
-    max-width: 400px;
-    margin: 0 auto;
-  }
-  
-  .carHeader {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 10px;
-  }
-  
-  .backButton {
-    background: none;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-  }
-  
-  .carInfo h2 {
-    margin: 0;
-    font-size: 24px;
-  }
-  
-  .carModel {
-    font-size: 14px;
-    color: grey;
-  }
-  
-  .moreOptions {
-    font-size: 24px;
-    cursor: pointer;
-  }
-  
-  .carImageContainer {
-    display: flex;
-    justify-content: center;
-    margin: 20px 0;
-  }
-  
-  .carImage {
-    max-width: 100%;
-    height: auto;
-  }
-  
-  .carSpecs {
-    display: flex;
-    justify-content: space-between;
-    text-align: center;
-    margin: 20px 0;
-  }
-  
-  .specItem span {
-    font-size: 18px;
-    font-weight: bold;
-  }
-  
-  .specItem p {
-    font-size: 12px;
-    color: grey;
-  }
-  
-  .transmission {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 0;
-    border-top: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .statsSection {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-  }
-  
-  .statItem {
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    flex: 1;
-    text-align: center;
-    margin-right: 10px;
-  }
-  
-  .statItem:last-child {
-    margin-right: 0;
-  }
-  
-  .statHeader {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .activityChange {
-    color: green;
-    font-size: 12px;
-  }
-  
-  .actionSection {
-    display: flex;
-    justify-content: space-between;
-    margin: 20px 0;
-  }
-  
-  .actionButton {
-    background-color: #ddd;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .bookingSection {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    background-color: black;
-    color: white;
-    border-radius: 10px;
-  }
-  
-  .bookingButton {
-    background-color: black;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.pageContainer {
+  position: relative;
+  /* Add any margin you want on this container */
+  margin: 20px;
+  /* Example margin */
+}
+
+.pageContainer::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('/blacktext.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  z-index: -1;
+  /* Place it behind other content */
+}
+
+.carHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+  margin-right: 35px;
+}
+
+.backButton {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.carInfo h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.carModel {
+  margin-left: 20px;
+  font-size: 14px;
+  color: grey;
+}
+
+.moreOptions {
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.carImageContainer {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.carImage {
+  border-radius: 30px;
+  max-width: 100%;
+  height: auto;
+}
+
+.specifications {
+  display: flex;
+  /* Keep specs next to each other */
+  justify-content: space-around;
+  /* Distribute space evenly */
+  margin-bottom: 10px;
+  /* Space between specs and transmission section */
+  margin-top: 20px;
+}
+
+.specItem span {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.specItem {
+  text-align: center;
+  margin-right: 50px;
+}
+
+.specItem:last-child {
+  margin-right: 0;
+  /* No right margin for the last item */
+}
+
+.specItem p {
+  font-size: 12px;
+  color: grey;
+}
+
+
+.statsSection {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.statItem {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  flex: 1;
+  text-align: left;
+  margin-right: 10px;
+}
+
+.statItem:last-child {
+  margin-right: 0;
+}
+
+.statHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.activityChange {
+  color: green;
+  font-size: 12px;
+}
+
+.actionSection {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+.actionButton {
+  background-color: #ddd;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.bookingSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: black;
+  color: white;
+  border-radius: 10px;
+}
+
+.bookingButton {
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.specsContainer {
+  display: flex;
+  /* Use flexbox for centering */
+  flex-direction: column;
+  /* Align items in a column */
+  align-items: center;
+  /* Center items horizontally */
+  text-align: center;
+  /* Center text */
+  padding: 20px;
+  /* Padding around the container */
+  /* Add a border to the container */
+  border-radius: 20px;
+  /* Rounded corners */
+  background-color: white;
+  /* Background color for the container */
+  margin-bottom: 20px;
+  /* Spacing below the container */
+  position: relative;
+}
+
+.specItem span {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.specItem p {
+  font-size: 12px;
+  color: grey;
+}
+
+.transmissionContainer {
+  display: flex;
+  /* Align transmission label and value next to each other */
+  /* Center horizontally */
+  /* Align vertically */
+  margin-top: 10px;
+  /* Space above the transmission section */
+}
+
+.logo {
+  position: absolute;
+  /* Changed to absolute positioning */
+  top: -20px;
+  /* Adjusted to move the logo above the container */
+  left: 50%;
+  /* Centered the logo horizontally */
+  transform: translateX(-50%);
+  /* Adjusted to center the logo */
+  max-width: 80px;
+  /* Set a maximum width for the logo */
+  margin-bottom: 15px;
+  /* Optional: Space below the logo */
+}
+
+
+.transmissionLabel {
+  font-weight: bold;
+  /* Make "Transmissions" stand out */
+  /* Space between label and value */
+  margin-left: -5px;
+  margin-right: 30px;
+
+}
+
+.statsContainer {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.statItem {
+  background-color: white;
+  padding: 15px;
+  border-radius: 20px;
+  flex: 1;
+}
+
+.act{
+  margin-top: 5px;
+}
+
+.statItem2 {
+  background-color: white;
+  padding: 15px;
+  border-radius: 20px;
+  flex: 1;
+}
+
+.activityChange {
+  color: rgb(255, 255, 255);
+  font-size: 15px;
+}
+
+.green {
+  background-color: rgb(31, 153, 31);
+  width: 30px;
+  height: 25px;
+  border-radius: 10px;
+  align-items: center;
+  padding: 5px;
+}
+
+.statItem h3 {
+  font-size: 30px;
+  margin-bottom: 5px;
+  margin-top: 20px;
+}
+
+.statItem p {
+  color: #9f9f9f;
+}
+
+.bookingSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: black;
+  color: white;
+  border-radius: 20px;
+  margin-top: 20px;
+  cursor: pointer;
+  height: 40px;
+}
+
+.bookingSection p{
+  color: #9f9f9f;
+  margin-right: 15px;
+  font-size: 20px;
+}
+
+.bookingSection a{
+  margin: 0;
+  font-weight:700;
+  font-size: 25px;
+}
+
+.imageContainer {
+  margin-top: 20px;
+  display: flex;
+  /* Use flexbox for alignment */
+  justify-content: space-around;
+  /* Space out the images evenly */
+}
+
+.specImage {
+  max-width: 50px;
+  /* Set a max width for the images */
+  height: auto;
+  /* Maintain aspect ratio */
+  margin: 0 32px;
+  /* Optional: Add some horizontal margin */
+}
+
+.transmissionImage {
+  width: 40px;
+  /* Set a width for the image */
+  height: auto;
+  /* Maintain aspect ratio */
+  margin-left: 55px;
+  /* Space between text and image */
+  margin-right: 4px;
+}
+
+.transmissionValue {
+  display: flex;
+  /* Use flex to align text and image */
+  align-items: center;
+  /* Center align vertically */
+  margin-right: 20px;
+  margin-top: 7px;
+}

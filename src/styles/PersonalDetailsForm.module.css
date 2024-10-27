@@ -1,0 +1,92 @@
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 280px; /* Reduced width */
+  margin: 80px 110px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+  background-color: rgba(139, 139, 139, 0.3);
+  backdrop-filter: blur(10px) brightness(1.1);
+  /* background: #fff;
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.4), 0 0 10px rgba(0, 123, 255, 0.2); */
+  height: 300px;
+}
+
+.formGroup {
+  position: relative;
+  width: 100%;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  margin-top: 15px;
+  width: 30px;
+  height: 30px;
+  margin-right: 15px;
+}
+
+.formInput {
+  width: 85%; /* Decreased width */
+  padding: 12px 0;
+  border: none;
+  border-bottom: 1px solid #ccc; /* Single line instead of box */
+  font-size: 1rem;
+  background: transparent;
+  outline: none;
+  padding-bottom: 5px;
+  margin-top: 20px;
+}
+
+.formInput:focus {
+  border-bottom-color: #007bff;
+}
+
+.formLabel {
+  margin-top: 15px;
+  position: absolute;
+  top: 10px;
+  left: 40px; /* Adjusted for icon space */
+  font-size: 1rem;
+  color: black;
+  transition: 0.2s ease all;
+  pointer-events: none;
+}
+
+.formInput:focus + .formLabel,
+.formInput:not(:placeholder-shown) + .formLabel {
+  top: -10px;
+  left: 32px;
+  font-size: 0.8rem;
+  color: #007bff;
+}
+
+
+.formButton {
+  margin-top: 20px;
+  padding: 12px 25px; /* Slightly larger padding for a prominent button */
+  font-size: 1rem;
+  color: #fff;
+  background: linear-gradient(135deg, #ff5c5c, #d9534f); /* Gradient background */
+  border: none;
+  border-radius: 6px; /* Rounded corners for a softer look */
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Adds a 3D effect */
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease;
+}
+
+.formButton:hover {
+  background: linear-gradient(135deg, #d9534f, #c9302c); /* Darker gradient on hover */
+  transform: translateY(-2px); /* Slight lift on hover */
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4); /* Enhanced shadow on hover */
+}
+
+.formButton:active {
+  transform: translateY(0); /* Reset lift on click */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Return shadow to normal on click */
+}
+

@@ -1,13 +1,12 @@
 import CarDetail from '../components/CarDetail';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+import styles from '../styles/CarDetail.module.css';
 
 export default function CarDetailPage() {
   return (
     <>
-      <Navbar />
-      <CarDetail />
-      <Footer />
+      <div className={styles.pageContainer}>
+        <CarDetail />
+      </div>
     </>
   );
 }

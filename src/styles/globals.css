@@ -3,9 +3,12 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Rethink Sans', sans-serif; /* Updated font-family */
-  background-color: #fff; /* Dark mode background */
-  color: black; /* White text color for dark mode */
+  font-family: 'Rethink Sans', sans-serif;
+  /* Updated font-family */
+  background-color: #fff;
+  /* Dark mode background */
+  color: black;
+  /* White text color for dark mode */
 }
 
 a {
@@ -31,21 +34,112 @@ body.dark {
   color: var(--navbar-text);
 }
 
+body.dark h2 {
+  color: #fff;
+  /* White for h2 in dark mode */
+}
+
+body.dark p {
+  color: #b2b2b2;
+  /* Light gray for p in dark mode */
+}
+
+body.dark .startsFrom {
+  color: #ffffff;
+}
+
+body.dark .perDay {
+  color: rgb(197, 196, 196);
+}
+
+body.dark .trans {
+  color: rgb(185, 185, 185);
+}
+
+body.dark .comfort div {
+  background-color: #414141;
+}
+
+body.dark .left aside {
+  background-color: #1e1e1e;
+}
+
+body.dark .left li {
+  background-color: #414141;
+}
+
+body.dark .active li {
+  background-color: #2c2c2c;
+}
+
+body.dark .left li:hover {
+  background-color: #2c2c2c;
+}
+
+body.dark .header header {
+  background-color: #1e1e1e;
+}
+
+body.dark .carListings section {
+  background-color: #1e1e1e;
+}
+
+body.dark .right div {
+  background-color: #2c2c2c;
+}
+
+body.dark .full aside{
+  background-color: #1e1e1e;
+}
+
+body.dark .mainC main{
+  background-color: #2c2c2c;
+}
+
+body.dark .settings button{
+  background-color: #252525;
+}
+
+body.dark .settings button:hover{
+  background-color: #000000;
+}
+
+/* body.dark .form-1 form{
+  background-color: #000000;
+} */
+
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(100%) hue-rotate(180deg);
+}
+
+input[type="time"]::-webkit-inner-spin-button,
+input[type="time"]::-webkit-calendar-picker-indicator {
+  filter: invert(100%) hue-rotate(180deg);
+}
+
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 10px; /* Width of the scrollbar */
-  height: 10px; /* Height of the scrollbar for horizontal scrollbars */
+  width: 10px;
+  /* Width of the scrollbar */
+  height: 10px;
+  /* Height of the scrollbar for horizontal scrollbars */
 }
 
 ::-webkit-scrollbar-track {
-  background: transparent; /* Background of the scrollbar track */
+  background: transparent;
+  /* Background of the scrollbar track */
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #6a5af9; /* Color of the scrollbar thumb */
-  border-radius: px; /* Rounded corners for the thumb */
+  background-color: #6a5af9;
+  /* Color of the scrollbar thumb */
+  border-radius: px;
+  /* Rounded corners for the thumb */
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #5b4cbf; /* Darker color on hover */
+  background-color: #5b4cbf;
+  /* Darker color on hover */
 }

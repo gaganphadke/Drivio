@@ -39,6 +39,7 @@
   max-width: 280px; /* Slightly increased width */
   height: 430px; /* Increased container height */
   padding-bottom: 60px;
+  cursor: pointer;
 }
 
 .carContainer:hover {
@@ -140,21 +141,26 @@
   color: #777;
 }
 
-.seeMore {
-  margin-top: 2.5rem;
-}
-
 .seeMore button {
-  background-color: #333;
-  color: white;
-  padding: 0.9rem 2.5rem;
-  border-radius: 6px;
-  font-size: 1.1rem;
+  margin-top: 20px;
+  padding: 12px 25px; /* Slightly larger padding for a prominent button */
+  font-size: 1rem;
+  color: #fff;
+  background: linear-gradient(135deg, #ff5c5c, #d9534f); /* Gradient background */
   border: none;
+  border-radius: 6px; /* Rounded corners for a softer look */
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Adds a 3D effect */
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease;
 }
 
 .seeMore button:hover {
-  background-color: #555;
+  background: linear-gradient(135deg, #d9534f, #c9302c); /* Darker gradient on hover */
+  transform: translateY(-2px); /* Slight lift on hover */
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
+}
+
+.seeMore button:active{
+  transform: translateY(0);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); 
 }

@@ -1,0 +1,55 @@
+.stepperContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 60px; /* Increased spacing between steps */
+  margin-bottom: 140px;
+  margin-top: 50px;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: gray;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+
+.step span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-color: lightgray;
+  color: #fff;
+  font-weight: bold;
+}
+
+.step.active span {
+  background-color: #5a67d8; /* purple */
+}
+
+.step.active p {
+  color: black; /* Changes text color for active steps */
+}
+
+.step p {
+  margin: 0 0 0 8px;
+  color: #a0aec0; /* Light gray color for inactive steps */
+}
+
+.connector {
+  width: 80px; /* Increased width for more spacing */
+  height: 2px;
+  background-color: lightgray;
+}
+
+.activeConnector {
+  background-color: #5a67d8; /* Purple for active connector */
+}

@@ -26,25 +26,24 @@ const Feedback = () => {
   return (
     <div className={styles.feedbackContainer}>
       <div className={styles.feedbackHeader}>
-        <span className={styles.feedbackIcon}>💬</span>
+        <span><img className={styles.feedbackIcon} src='\feed.png' /></span>
         <span className={styles.feedbackTitle}>Feedback</span>
       </div>
-      <h2>How are you feeling?</h2>
+      <h2 className={styles.how}>How are you feeling?</h2>
       <div className={styles.emojiContainer}>
         {emojis.map((emoji, index) => (
           <div
             key={index}
-            className={`${styles.emoji} ${
-              selectedEmoji === index ? styles.selected : ''
-            }`}
+            className={`${styles.emoji} ${selectedEmoji === index ? styles.selected : ''
+              }`}
             onClick={() => handleEmojiClick(index)}
           >
-            <Image 
-              src={emoji.image} 
-              alt={emoji.label} 
-              className={styles.emojiIcon} 
+            <Image
+              src={emoji.image}
+              alt={emoji.label}
+              className={styles.emojiIcon}
               width={50} // Adjust the size as needed
-              height={50} 
+              height={50}
             />
             {selectedEmoji === index && (
               <div className={styles.emojiLabel}>{emoji.label}</div>

@@ -4,12 +4,13 @@
   align-items: flex-end; /* Align items to the bottom */
   height: 100vh; /* Full viewport height */
   overflow: hidden; /* Prevent overflow within the container */
-  background-image: url('../assets/back.jpeg');
+  background-image: url('../assets/back.jpg');
   background-size: cover;
   background-position: center;
   padding: 2rem; /* Adjusted padding */
   position: relative; /* Relative positioning for child elements */
   background-position: center 100%;
+  
 }
 
 .switchContainer {
@@ -48,20 +49,21 @@
 
 .formContainer {
   margin-top: 45px;
-  background: rgba(255, 255, 255, 0.6); /* Solid white background */
   padding: 2rem;
   border-radius: 12px; /* Slightly larger radius for a smoother look */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  width: 300px;
+  width: 350px;
   text-align: center;
   align-self: center;
-  margin-left: 560px;
+  margin-left: 360px;
+  background-color: rgba(139, 139, 139, 0.3);
+  backdrop-filter: blur(10px) brightness(1.1);
 }
 
 .formContainer .title {
   margin-bottom: 1rem;
   font-size: 1.5rem;
-  color: #333;
+  color: #000000;
 }
 
 .formContainer .form {
@@ -70,16 +72,20 @@
 }
 
 .formContainer .form input {
-  margin-bottom: 1rem;
-  padding: 0.75rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  padding: 0.75rem 0.75rem 0.75rem 2.5rem; /* Extra left padding for the image */
+  border: none; /* Remove border */
+  border-bottom: 2px solid #000000; /* Add a bottom border line */
+  border-radius: 0; /* Remove rounding for the bottom border */
   font-size: 1rem;
+  width: 80%; /* Ensure full width */
+  background: transparent; /* Keep transparent background */
+  display: inline-block; /* Change to inline-block for width adjustment */
+  margin-bottom: 20px;
 }
 
 .formContainer .form input:focus {
-  border: 1px solid #0070f3; /* Change border color on focus */
   outline: none; /* Remove outline */
+  border-bottom: 2px solid #4e73f6; /* Change bottom border color on focus */
 }
 
 .formContainer .form button {
@@ -103,6 +109,7 @@
   transition: color 0.3s ease; /* Smooth color transition */
   white-space: nowrap; /* Prevent text wrap */
   box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+  margin-top: 30px;
 }
 
 .formContainer .form button:before {
@@ -130,7 +137,7 @@
 }
 
 .formContainer .form button:hover span {
-  color: whitesmoke; /* Change text color to white on hover */
+  color: rgb(255, 255, 255); /* Change text color to white on hover */
 }
 
 .formContainer p {
@@ -146,6 +153,9 @@
   color: #0070f3; /* Link color */
   cursor: pointer; /* Pointer on hover */
   text-decoration: underline;
+}
+.forgotPassword{
+  color: rgb(0, 0, 0);
 }
 
 .toggleContainer {
@@ -192,20 +202,61 @@
   transform: translateX(100%); /* Slide to the right when Signup is active */
 }
 .googleButton {
-  background-color: #4285F4;
-  color: white;
+  margin-top: 20px;
+  padding: 12px 25px; /* Slightly larger padding for a prominent button */
+  font-size: 1rem;
+  color: #fff;
+  background: linear-gradient(135deg, #473ad1, #2215aa); /* Darker gradient on hover */
   border: none;
-  padding: 10px 20px;
-  margin-top: 10px;
-  border-radius: 5px;
+  border-radius: 6px; /* Rounded corners for a softer look */
   cursor: pointer;
-  margin-top: 35px;
-  margin-bottom: 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Adds a 3D effect */
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease;
 }
 
 .googleButton:hover {
-  background-color: #357ae8;
+  background: linear-gradient(135deg, #2314c5, #180e85); /* Darker gradient on hover */
+  transform: translateY(-2px); /* Slight lift on hover */
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4); /* Enhanced shadow on hover */
 }
 
+.googleButton:active{
+  transform: translateY(0); /* Reset lift on click */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3)
+}
 
+.formContainer .formGroup {
+  position: relative; /* For positioning the label */
+  margin-bottom: 1rem; /* Space between inputs */
+}
+
+.formContainer .form label {
+  position: absolute; /* Position the label absolutely */
+  left: 20px; /* Adjust left position */
+  top: 23px; /* Center vertically */
+  transform: translateY(-50%); /* Center the label */
+  font-size: 1rem;
+  color: #000000;
+  transition: 0.2s ease all; /* Transition effect */
+  pointer-events: none; /* Prevent pointer events on the label */
+}
+
+.formContainer .form input:focus + label,
+.formContainer .form input:not(:placeholder-shown) + label {
+  top: -10px; /* Move label above input when focused or not empty */
+  left: 10px; /* Keep left position */
+  font-size: 0.8rem; /* Smaller font size */
+  color: #ffffff; /* Change label color */
+}
+
+.formContainer .form img {
+  position: absolute; /* Position image absolutely */
+  left: 10px; /* Align to the left */
+  top: 50%; /* Center vertically */
+  transform: translateY(-50%); /* Center the image */
+  width: 20px; /* Adjust the size as needed */
+  height: 20px; /* Adjust the size as needed */
+  left: -15px;  
+  top: 23px;
+}
 

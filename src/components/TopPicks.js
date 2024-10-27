@@ -1,5 +1,6 @@
 import styles from '../styles/TopPicks.module.css';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const TopPicks = () => {
   const cars = [
@@ -99,78 +100,78 @@ const TopPicks = () => {
         <h2>Top picks vehicle this month</h2>
         <p>Experience the epitome of an amazing journey with our top picks.</p>
       </div>
+      <Link href="/car-detail" passHref>
+        <div className={styles.carsGrid}>
+          {cars.map((car) => (
+            <div key={car.id} className={styles.carContainer}>
 
-      <div className={styles.carsGrid}>
-        {cars.map((car) => (
-          <div key={car.id} className={styles.carContainer}>
+              {/* Car Image and Category Tag (inside the container) */}
+              <div className={styles.carCard}>
+                <span className={styles.categoryTag}>{car.category}</span>
+                <img src={car.image} alt={car.name} className={styles.carImage} />
+              </div>
 
-            {/* Car Image and Category Tag (inside the container) */}
-            <div className={styles.carCard}>
-              <span className={styles.categoryTag}>{car.category}</span>
-              <img src={car.image} alt={car.name} className={styles.carImage} />
+              {/* Car Details (outside the container) */}
+              <div className={styles.carDetailsContainer}>
+                <h3 className={styles.carTitle}>{car.name}</h3>
+
+                {/* Transmission with Gear Icon */}
+                <div className={styles.transmission}>
+                  <Image
+                    src="/gear.png"
+                    alt="Transmission Gear Icon"
+                    width={18}
+                    height={18}
+                    className={styles.icon}
+                  />
+                  <span className='trans'>{car.transmission}</span>
+                </div>
+
+                <div className={styles.carDetails}>
+                  <span>
+                    <Image
+                      src="/group.png"
+                      alt="Passengers"
+                      width={18}
+                      height={18}
+                      className={styles.icon}
+                    />
+                    {car.passengers}
+                  </span>
+
+                  <span>
+                    <Image
+                      src="/luggage.png"
+                      alt="Luggage"
+                      width={18}
+                      height={18}
+                      className={styles.icon}
+                    />
+                    {car.luggage}
+                  </span>
+
+                  <span>
+                    <Image
+                      src="/star.png"
+                      alt="Rating"
+                      width={18}
+                      height={18}
+                      className={styles.icon}
+                    />
+                    {car.rating}
+                  </span>
+                </div>
+
+                <div className={styles.priceInfo}>
+                  <span className='startsFrom'>Starts from</span>
+                  <span className={styles.price}>{car.price}</span>
+                  <span className={styles.perDay}><span className='perDay'>/ day</span></span>
+                </div>
+              </div>
             </div>
-
-            {/* Car Details (outside the container) */}
-            <div className={styles.carDetailsContainer}>
-              <h3 className={styles.carTitle}>{car.name}</h3>
-
-              {/* Transmission with Gear Icon */}
-              <div className={styles.transmission}>
-                <Image
-                  src="/gear.png"
-                  alt="Transmission Gear Icon"
-                  width={18}
-                  height={18}
-                  className={styles.icon}
-                />
-                <span>{car.transmission}</span>
-              </div>
-
-              <div className={styles.carDetails}>
-                <span>
-                  <Image
-                    src="/group.png"
-                    alt="Passengers"
-                    width={18}
-                    height={18}
-                    className={styles.icon}
-                  />
-                  {car.passengers}
-                </span>
-
-                <span>
-                  <Image
-                    src="/luggage.png"
-                    alt="Luggage"
-                    width={18}
-                    height={18}
-                    className={styles.icon}
-                  />
-                  {car.luggage}
-                </span>
-
-                <span>
-                  <Image
-                    src="/star.png"
-                    alt="Rating"
-                    width={18}
-                    height={18}
-                    className={styles.icon}
-                  />
-                  {car.rating}
-                </span>
-              </div>
-
-              <div className={styles.priceInfo}>
-                <span>Start from</span>
-                <span className={styles.price}>{car.price}</span>
-                <span className={styles.perDay}>/ day</span>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-
+          ))}
+        </div>
+      </Link>
       <div className={styles.seeMore}>
         <button>See More</button>
       </div>

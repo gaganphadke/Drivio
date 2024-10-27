@@ -1,0 +1,331 @@
+/* Container for the checkout page */
+.checkoutContainer {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  flex-wrap: wrap;
+  margin-top: -80px;
+  /* Ensures responsiveness on smaller screens */
+}
+
+/* Left column to hold the booking details */
+.leftColumn {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Right column for payment and summary sections */
+.rightColumn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* Notification for booking hold */
+.holdNotification {
+  background-color: #fff3cd;
+  color: #856404;
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  align-items: center;
+  display: flex;
+}
+
+/* Book information container with green background */
+.bookInfo {
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: #f8f9fa;
+  margin-bottom: -19px;
+}
+
+.successMessage {
+  background-color: #d4edda;
+  /* Light green background */
+  color: #155724;
+  /* Dark green text */
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+/* Payment and summary containers */
+.paymentDetail {
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: #fff;
+}
+
+/* Summary with light grey background */
+.summary {
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: #fff;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Back button styling */
+.backButton {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Responsive layout adjustment */
+@media (max-width: 768px) {
+  .checkoutContainer {
+    flex-direction: column;
+  }
+}
+
+/* Cancellation Policy Section */
+.cancellationPolicy {
+  background-color: #f8f9fa;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.cancellationPolicy h3 {
+  margin-bottom: 10px;
+}
+
+.policyLink {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.policyLink:hover {
+  text-decoration: underline;
+}
+
+/* Terms and Conditions Checkbox */
+.termsCheckbox {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  gap: 8px;
+}
+
+.termsCheckbox label {
+  font-size: 14px;
+  color: #555;
+}
+
+.blue {
+  color: blue;
+}
+
+.bookingDetails {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 10px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.bookingDetails div {
+  text-align: left;
+}
+
+.bookingDetails p:first-child {
+  font-weight: bold;
+  color: #9e9e9e;
+}
+
+.bookingDetails p:last-child {
+  color: #333;
+  font-weight: 600;
+}
+
+.summaryDetails,
+.priceDetails {
+  border-top: 1px solid #e0e0e0;
+  padding-top: 15px;
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  /* Stack items in a single column */
+  gap: 10px;
+}
+
+/* Each item in the summary and price details */
+.summaryDetails div,
+.priceDetails div {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Total section with icon */
+.total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #e0e0e0;
+  padding-top: 15px;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #333;
+}
+
+.tag{
+  width: 40px;
+  margin-bottom: -15px;
+}
+
+.carContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease;
+  width: 355px;
+  /* Slightly increased width */
+  height: 505px;
+  /* Increased container height */
+  padding-bottom: 10px;
+  margin-left: 15px;
+  margin-top: 40px;
+}
+
+.carsGrid {
+  margin-left: 70px;
+  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  row-gap: 50px;
+}
+
+.carContainer:hover {
+  transform: scale(1.05);
+}
+
+.carCard {
+  position: relative;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 300px;
+}
+
+.categoryTag {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  /* Positioned to the left corner */
+  background-color: #f5f5f5;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.carImage {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.carDetailsContainer {
+  margin-top: 1rem;
+  text-align: left;
+  width: 100%;
+}
+
+.carTitle {
+  margin-top: 10px;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+}
+
+.transmission {
+  display: flex;
+  align-items: center;
+  font-size: 1.1rem;
+  color: #c7c3c3;
+  margin: 0.3rem 0;
+}
+
+.transmission .icon {
+  margin-bottom: 10px;
+  margin-right: 0.5rem;
+}
+
+.carDetails {
+  display: flex;
+  justify-content: flex-start;
+  /* Align items to the left */
+  margin: 0.2rem 0;
+  /* Decrease the vertical gap between elements */
+}
+
+.carDetails span {
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
+  /* Optional: add a small right margin between items */
+  color: white;
+  font-weight: bolder;
+}
+
+.icon {
+  display: inline-block;
+  margin-right: 0.2rem;
+  /* Reduced space between icon and text */
+}
+
+.tc {
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.bold {
+  font-weight: bolder;
+}
+
+.time {
+  width: 50px;
+  height: auto;
+}
+
+.notiText{
+  margin-left: 30px;
+}
+
+.check{
+  width: 50px;
+}
+
+.caution{
+  width: 70px;
+  margin-bottom: 55px;
+}

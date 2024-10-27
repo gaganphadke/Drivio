@@ -9,12 +9,21 @@
     background-color: var(--navbar-bg);
     font-family: Arial, sans-serif;
     color: var(--navbar-text);
-    position: relative; /* Changed from sticky to relative */
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
     z-index: 1000;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional shadow for clarity */
+    transition: transform 0.3s ease;
 }
 
+.navbar.hidden {
+    transform: translateY(-100%);
+}
+
+.navbar.visible {
+    transform: translateY(0);
+}
 
 /* Add gradient animation to the bottom border */
 .navbar::after {
@@ -51,14 +60,13 @@
 
 .navLinks {
     display: flex;
-    gap: 20px;
+    gap: 30px;
     list-style: none;
-    margin-right: 65px;
+    margin-right: 90px;
 }
 
 .navLinks li {
     position: relative;
-    /* Allow absolute positioning for the pseudo-element */
 }
 
 .navLinks li a {

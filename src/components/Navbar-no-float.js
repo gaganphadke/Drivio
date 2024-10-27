@@ -83,14 +83,6 @@ const Navbar = () => {
             </span>
           </span>
         </label>
-        <Link 
-          href="/login-signup" 
-          className={styles.loginButton} 
-           // Apply the dynamic box shadow here
-          // style={{ boxShadow: buttonShadow }}
-        >
-          <span>Sign in</span>
-        </Link>
       </div>
     </nav>
   );

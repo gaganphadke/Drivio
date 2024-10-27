@@ -99,6 +99,10 @@
   font-size: 20px;
 }
 
+.exploring{
+  border-radius: 15px;
+}
+
 .exploreButton {
   background-color: #6a5af9;
   color: white;
@@ -193,7 +197,7 @@
   text-align: center;
   background-color: white;
   padding: 10px 20px; /* Reduce vertical padding */
-  border-radius: 20px; /* Keep the same border radius */
+  border-radius: 30px; /* Keep the same border radius */
   margin-bottom: 10px; /* Keep the same bottom margin */
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Optional: lighter shadow */
 }
@@ -296,7 +300,7 @@
 
 .sidebarItem:hover,
 .active {
-  background-color: #efefef;
+  background-color: #ccc9c9;
 }
 
 .icon {
@@ -338,7 +342,7 @@
 }
 
 .settings:hover{
-  background-color: rgb(15, 7, 61);
+  background-color: rgb(54, 31, 73);
 
 }
 
