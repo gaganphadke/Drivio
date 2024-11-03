@@ -173,7 +173,12 @@ const TopPicks = () => {
         </div>
       </Link>
       <div className={styles.seeMore}>
-        <button>See More</button>
+<Link href="/cars" passHref>
+  <div className={styles.seeMore}>
+    <button>See More</button>
+  </div>
+</Link>
+
       </div>
     </section>
   );
