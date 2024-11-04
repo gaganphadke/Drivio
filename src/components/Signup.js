@@ -1,9 +1,7 @@
-// signup.js
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import axios from 'axios';
 import styles from '../styles/LoginSignup.module.css';
-import Image from 'next/image';
 
 const Signup = () => {
   const [username, setUsername] = useState('');
@@ -11,15 +9,18 @@ const Signup = () => {
   const [password, setPassword] = useState('');
   const router = useRouter();
 
-  const handleSignup = async (formData) => {
+  const handleSignup = async (e) => {
+    e.preventDefault(); // Prevent default form submission
+    const formData = { username, email, password }; // Collect data into an object
+
     try {
       const response = await axios.post('http://localhost:5000/auth/signup', formData);
       console.log(response.data.message);
+      router.push('/login'); // Redirect to login after signup
     } catch (error) {
       console.error('Signup failed:', error.response ? error.response.data : error.message);
     }
   };
-
 
   return (
     <div>

@@ -22,11 +22,21 @@ export default function UserProfile() {
     };
 
     // Submit form data
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(`Submitting ${userType} data`, formData);
-        // You could send this data to your backend using fetch or Axios here
+        try {
+            const response = await fetch('http://localhost:5001/user/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ userType, ...formData })
+            });
+            const message = await response.text();
+            console.log(message);
+        } catch (error) {
+            console.error('Error:', error);
+        }
     };
+    
 
     return (
         <div className="container">

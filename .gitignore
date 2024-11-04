@@ -37,3 +37,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Ignore Google Cloud Service Account key
+firebase_to_sql/serviceAccountKey.json
+
+/backend/.env

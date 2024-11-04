@@ -28,22 +28,85 @@ const AddCar = () => {
     description: '',
     severity: '',
     repair_cost: '',
-    status: '',
+    status: ''
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
-      [name]: value,
+      [name]: value
     }));
   };
 
-  const handleNext = () => setStep((prevStep) => Math.min(prevStep + 1, 3));
+  const handleNext = async () => {
+    if (step === 2) {
+      // Send Car Condition data to backend before moving to step 3
+      try {
+        const response = await fetch('http://localhost:5001/api/addCarCondition', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            reg_num: formData.reg_num,
+            engine_condition: formData.engine_condition,
+            tire_condition: formData.tire_condition,
+            brakes_condition: formData.brakes_condition,
+            battery_condition: formData.battery_condition,
+            fuel_level: formData.fuel_level,
+            mileage: formData.mileage,
+            last_service_date: formData.last_service_date,
+            insurance: formData.insurance,
+            battery_level: formData.battery_level,
+            cylinder_level: formData.cylinder_level
+          })
+        });
+        const result = await response.json();
+        console.log(result.message);
+        if (response.ok) {
+          alert('Car condition added successfully!');
+          setStep(3); // Move to the next step if submission was successful
+        } else {
+          alert('Failed to add car condition.');
+        }
+      } catch (error) {
+        console.error('Error adding car condition:', error);
+      }
+    } else {
+      setStep((prevStep) => Math.min(prevStep + 1, 3));
+    }
+  };
+
   const handlePrevious = () => setStep((prevStep) => Math.max(prevStep - 1, 1));
-  const handleSubmit = () => {
-    // Handle form submission here
-    console.log(formData);
+
+  const handleSubmit = async () => {
+    if (step === 3) {
+      // Submit Accident History data to the backend
+      try {
+        const response = await fetch('http://localhost:5001/api/addAccidentHistory', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            reg_num: formData.reg_num,
+            acc_date: formData.acc_date,
+            description: formData.description,
+            severity: formData.severity,
+            repair_cost: formData.repair_cost,
+            status: formData.status
+          })
+        });
+        const result = await response.json();
+        console.log(result.message);
+        if (response.ok) {
+          alert('Accident history added successfully!');
+        } else {
+          alert('Failed to add accident history.');
+        }
+      } catch (error) {
+        console.error('Error adding accident history:', error);
+      }
+    } else {
+      console.log('All steps completed');
+    }
   };
 
   return (
@@ -93,7 +156,11 @@ const AddCar = () => {
 
       <div className={styles.navigationButtons}>
         {step > 1 && <button onClick={handlePrevious}>Previous</button>}
-        {step < 3 ? <button onClick={handleNext}>Next</button> : <button onClick={handleSubmit}>Submit</button>}
+        {step < 3 ? (
+          <button onClick={handleNext}>Next</button>
+        ) : (
+          <button onClick={handleSubmit}>Submit</button>
+        )}
       </div>
     </div>
   );

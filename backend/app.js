@@ -1,18 +1,13 @@
-// app.js
-const express = require('express');
 const cors = require('cors');
-const authRoutes = require('/Users/gaganphadke/DBMS/Project/car-rental-app/backend/routes/authRoutes.js');
-require('dotenv').config();
-
+const express = require('express');
+const userRoutes = require('./routes/userRoutes');
+const carRoutes=require('./routes/carRoutes')
 const app = express();
-app.get('/', (req, res) => {
-  res.send('Welcome to the Car Rental App API!'); // You can customize this message
-});
-app.use(cors());
-app.use(express.json());
-app.use('/auth', authRoutes);
 
-const PORT = process.env.PORT || 5001;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+app.use(cors()); // Enable CORS for all routes
+app.use(express.json());
+app.use('/user', userRoutes); // Mount the routes
+console.log("Registering /api routes..."); 
+app.use('/api', carRoutes);
+
+app.listen(5001, () => console.log('Server running on port 5001'));
