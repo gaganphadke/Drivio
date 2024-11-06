@@ -1,40 +1,46 @@
-// login.js
 import { signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
 import { auth, provider } from '../lib/firebaseConfig';
 import { useState } from 'react';
-import { useRouter } from 'next/router'; // Import the useRouter hook from Next.js
+import { useRouter } from 'next/router';
+import axios from 'axios';
 import styles from '../styles/LoginSignup.module.css';
-import Image from 'next/image';
-
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const router = useRouter(); // Initialize useRouter
+  const router = useRouter();
 
-  // Handle Email/Password login
-  const handleEmailLogin = (e) => {
+  const handleEmailLogin = async (e) => {
     e.preventDefault();
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        console.log(userCredential.user);
-        router.push('/'); // Redirect to landing page
-      })
-      .catch((error) => {
-        console.error(error);
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+
+      await axios.post('/api/auth/login-signup', {
+        email: user.email,
+        uid: user.uid,
       });
+
+      router.push('/'); // Redirect to landing page
+    } catch (error) {
+      console.error("Error logging in:", error);
+    }
   };
 
-  // Handle Google login
-  const handleGoogleLogin = () => {
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        console.log(result.user);
-        router.push('/'); // Redirect to landing page on successful login
-      })
-      .catch((error) => {
-        console.error(error);
+  const handleGoogleLogin = async () => {
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+
+      await axios.post('/api/auth/login-signup', {
+        email: user.email,
+        uid: user.uid,
       });
+
+      router.push('/'); // Redirect to landing page on successful login
+    } catch (error) {
+      console.error("Error with Google login:", error);
+    }
   };
 
   return (
@@ -42,7 +48,7 @@ const Login = () => {
       <h2 className={styles.title}>Login Form</h2>
       <form className={styles.form} onSubmit={handleEmailLogin}>
         <div className={styles.formGroup}>
-          <img src="/mail2.png" alt="Email" className={styles.mail}/> {/* Replace with your email icon path */}
+          <img src="/mail2.png" alt="Email" className={styles.mail}/>
           <input
             type="email"
             placeholder=""
@@ -53,7 +59,7 @@ const Login = () => {
           <label>Email Address</label>
         </div>
         <div className={styles.formGroup}>
-          <img src="/pass.png" alt="Password" /> {/* Replace with your password icon path */}
+          <img src="/pass.png" alt="Password" />
           <input
             type="password"
             placeholder=""

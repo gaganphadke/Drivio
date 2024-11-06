@@ -1,0 +1,220 @@
+.topPicksSection {
+    padding: 2rem 0; /* Reduced horizontal padding */
+    text-align: center;
+    max-width: 1400px; /* Increased max-width for less side gap */
+    margin: 0 auto;
+    margin-left: 83px;
+    user-select: none;
+    -webkit-user-select: none;
+    margin-top: 35px;
+  }
+  
+  .heading {
+    text-align: left;
+    margin-bottom: 2rem;
+  }
+  
+  .heading h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #000000;
+  }
+  
+  .heading p {
+    color: #777;
+    font-size: 1.3rem;
+  }
+  
+  .carsGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 cars in a row */
+    gap: 2rem; /* Increased gap between cards */
+    margin-top: 2rem;
+  }
+  
+  .carContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease;
+    max-width: 280px; /* Slightly increased width */
+    height: 430px; /* Increased container height */
+    padding-bottom: 60px;
+    cursor: pointer;
+  }
+  
+  .carContainer:hover {
+    transform: scale(1.05);
+  }
+  
+  .carCard {
+    position: relative;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 300px; /* Further increased height for the container */
+  }
+  
+  .categoryTag {
+    position: absolute;
+    top: 12px;
+    left: 12px; /* Positioned to the left corner */
+    background-color: #f5f5f5;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  .carImage {
+    width: 100%;
+    height: auto;
+    max-width: 240px; /* Increased image width */
+    object-fit: contain;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  
+  .carDetailsContainer {
+    margin-top: 1rem;
+    text-align: left;
+    width: 100%;
+  }
+  
+  
+  .carTitle {
+    font-size: 1.4rem;
+    font-weight: bold;
+  }
+  
+  .transmission {
+    display: flex;
+    align-items: center;
+    font-size: 1.1rem;
+    color: #777;
+    margin: 0.3rem 0;
+  }
+  
+  .transmission .icon {
+    margin-right: 0.5rem;
+  }
+  
+  .carDetails {
+    display: flex;
+    justify-content: flex-start; /* Align items to the left */
+    margin: 0.2rem 0; /* Decrease the vertical gap between elements */
+  }
+  
+  .carDetails span {
+    display: flex;
+    align-items: center;
+    margin-right: 1rem; /* Optional: add a small right margin between items */
+  }
+  
+  .icon {
+    display: inline-block;
+    margin-right: 0.2rem; /* Reduced space between icon and text */
+  }
+  
+  .priceInfo {
+    display: flex;
+    align-items: center;
+    font-size: 1.1rem;
+    color: #333;
+  }
+  
+  .priceInfo .price {
+    font-size: 2rem;
+    color: #ff5c5c;
+    font-weight: bold;
+    margin-left: 10px;
+    margin-right: 5px;
+  }
+  
+  .perDay {
+    font-size: 1rem;
+    color: #777;
+  }
+  
+
+
+  /* Search Bar */
+/* Container for search and filters */
+.filterControls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* Search Bar */
+.searchBar {
+  padding: 10px;
+  width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+  margin-bottom: 15px; /* Adds space between search bar and filters */
+}
+
+.searchBar:focus {
+  outline: none;
+  border-color: #0070f3;
+}
+
+/* Filter Select */
+.filterSelect {
+  padding: 10px;
+  width: 200px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+  cursor: pointer;
+  margin-bottom: 10px; /* Space between each filter */
+}
+
+.filterRow {
+  display: flex;
+  gap: 15px; /* Increased gap between each filter */
+  justify-content: center;
+  flex-wrap: wrap; /* Ensures filters wrap on smaller screens */
+}
+
+.filterSelect:focus {
+  outline: none;
+  border-color: #0070f3;
+}
+
+/* Reset Button */
+.resetButton {
+  margin-top: 20px;
+  padding: 12px 25px; /* Slightly larger padding for a prominent button */
+  font-size: 1rem;
+  color: #fff;
+  background: linear-gradient(135deg, #ff5c5c, #d9534f); /* Gradient background */
+  border: none;
+  border-radius: 6px; /* Rounded corners for a softer look */
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Adds a 3D effect */
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease;
+}
+
+.resetButton:hover {
+  background: linear-gradient(135deg, #d9534f, #c9302c); /* Darker gradient on hover */
+  transform: translateY(-2px); /* Slight lift on hover */
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
+}
+
+.resetButton:active{
+  transform: translateY(0);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); 
+}
+

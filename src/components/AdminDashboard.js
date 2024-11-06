@@ -1,31 +1,55 @@
-import React from 'react';
 import styles from '../styles/AdminDashboard.module.css';
 import Image from 'next/image';
+import React, { useState, useEffect } from 'react';
 
-const carData = [
-  { clientName: 'Liam Johnson', carType: 'Honda Brio', carNumber: '010 MOR', status: 'On Going' },
-  { clientName: 'Noah Anderson', carType: 'Pajero Sport', carNumber: '696 TON', status: 'Finished' },
-  { clientName: 'Ethan Smith', carType: 'Agya', carNumber: '665 KIT', status: 'Finished' },
-  { clientName: 'Mason Davis', carType: 'N/A', carNumber: 'N/A', status: 'Canceled' },
-  { clientName: 'Isabella Martinez', carType: 'Hyundai Elantra', carNumber: '234 DEF', status: 'Finished' },
-  { clientName: 'Olivia Garcia', carType: 'Nissan Altima', carNumber: '345 GHI', status: 'On Going' },
-  { clientName: 'James Wilson', carType: 'Ford Mustang', carNumber: '456 JKL', status: 'Finished' },
-  { clientName: 'Ava Rodriguez', carType: 'Chevrolet Malibu', carNumber: '567 MNO', status: 'Canceled' },
-  { clientName: 'Sophia Brown', carType: 'Kia Soul', carNumber: '678 PQR', status: 'Finished' },
-  { clientName: 'Benjamin Taylor', carType: 'Volkswagen Jetta', carNumber: '789 STU', status: 'On Going' },
-  { clientName: 'Lucas Martinez', carType: 'Mazda CX-5', carNumber: '890 VWX', status: 'Finished' },
-  { clientName: 'Amelia Hernandez', carType: 'Subaru Forester', carNumber: '901 YZA', status: 'On Going' },
-  { clientName: 'Elijah Lee', carType: 'Honda Accord', carNumber: '012 BCD', status: 'Finished' },
-  { clientName: 'Charlotte White', carType: 'Ford Explorer', carNumber: '123 EFG', status: 'Canceled' },
-  { clientName: 'Harper Scott', carType: 'Chevrolet Tahoe', carNumber: '234 HIJ', status: 'Finished' },
-  { clientName: 'Henry Kim', carType: 'Nissan Sentra', carNumber: '345 KLM', status: 'On Going' },
-  { clientName: 'Mia Young', carType: 'Kia Sorento', carNumber: '456 NOP', status: 'Finished' },
-  { clientName: 'Aiden Clark', carType: 'N/A', carNumber: 'N/A', status: 'Canceled' },
-  { clientName: 'Scarlett Lewis', carType: 'Toyota RAV4', carNumber: '678 TUV', status: 'Finished' },
-  { clientName: 'Daniel Walker', carType: 'BMW X3', carNumber: '789 WXY', status: 'On Going' }
-];
+
+// const carData = [
+//   { clientName: 'Liam Johnson', carType: 'Honda Brio', carNumber: '010 MOR', status: 'On Going' },
+//   { clientName: 'Noah Anderson', carType: 'Pajero Sport', carNumber: '696 TON', status: 'Finished' },
+//   { clientName: 'Ethan Smith', carType: 'Agya', carNumber: '665 KIT', status: 'Finished' },
+//   { clientName: 'Mason Davis', carType: 'N/A', carNumber: 'N/A', status: 'Canceled' },
+//   { clientName: 'Isabella Martinez', carType: 'Hyundai Elantra', carNumber: '234 DEF', status: 'Finished' },
+//   { clientName: 'Olivia Garcia', carType: 'Nissan Altima', carNumber: '345 GHI', status: 'On Going' },
+//   { clientName: 'James Wilson', carType: 'Ford Mustang', carNumber: '456 JKL', status: 'Finished' },
+//   { clientName: 'Ava Rodriguez', carType: 'Chevrolet Malibu', carNumber: '567 MNO', status: 'Canceled' },
+//   { clientName: 'Sophia Brown', carType: 'Kia Soul', carNumber: '678 PQR', status: 'Finished' },
+//   { clientName: 'Benjamin Taylor', carType: 'Volkswagen Jetta', carNumber: '789 STU', status: 'On Going' },
+//   { clientName: 'Lucas Martinez', carType: 'Mazda CX-5', carNumber: '890 VWX', status: 'Finished' },
+//   { clientName: 'Amelia Hernandez', carType: 'Subaru Forester', carNumber: '901 YZA', status: 'On Going' },
+//   { clientName: 'Elijah Lee', carType: 'Honda Accord', carNumber: '012 BCD', status: 'Finished' },
+//   { clientName: 'Charlotte White', carType: 'Ford Explorer', carNumber: '123 EFG', status: 'Canceled' },
+//   { clientName: 'Harper Scott', carType: 'Chevrolet Tahoe', carNumber: '234 HIJ', status: 'Finished' },
+//   { clientName: 'Henry Kim', carType: 'Nissan Sentra', carNumber: '345 KLM', status: 'On Going' },
+//   { clientName: 'Mia Young', carType: 'Kia Sorento', carNumber: '456 NOP', status: 'Finished' },
+//   { clientName: 'Aiden Clark', carType: 'N/A', carNumber: 'N/A', status: 'Canceled' },
+//   { clientName: 'Scarlett Lewis', carType: 'Toyota RAV4', carNumber: '678 TUV', status: 'Finished' },
+//   { clientName: 'Daniel Walker', carType: 'BMW X3', carNumber: '789 WXY', status: 'On Going' }
+// ];
+
 
 const AdminDashboard = () => {
+  const [carData, setCarData] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('/api/bookings'); // Accessing the API route
+        const data = await response.json(); // Parsing the JSON response
+    
+        console.log(data); // Log the data to see its structure
+    
+        if (Array.isArray(data)) {
+          setCarData(data); // Only set if it's an array
+        } else {
+          console.error("Fetched data is not an array:", data);
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <div className={styles.dashboard}>
       {/* Sidebar */}

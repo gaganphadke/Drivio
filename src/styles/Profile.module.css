@@ -1,0 +1,92 @@
+/* General container styling */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    background-image: url('../assets/back.jpeg');
+    background-size: cover;
+    background-position: center 100%;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+  }
+  
+  /* Title styling */
+  .title {
+    text-align: center;
+    color: #333;
+    font-family: Clarkson, Helvetica, sans-serif;
+    margin-bottom: 20px;
+  }
+  
+  /* User type selection container */
+  .userTypeSelection {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+  
+  /* Form group styling */
+  .formGroup {
+    position: relative;
+    margin-bottom: 15px;
+  }
+  
+  .label {
+    display: block;
+    font-weight: bold;
+    font-size: 1rem;
+    color: #000;
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: 0.2s ease all;
+  }
+  
+  .inputField {
+    width: 100%;
+    padding: 12px 20px;
+    border: none;
+    border-bottom: 2px solid #000;
+    background: transparent;
+    font-size: 1rem;
+  }
+  
+  .inputField:focus {
+    outline: none;
+    border-bottom: 2px solid #4e73f6;
+  }
+  
+  .inputField:focus + .label,
+  .inputField:not(:placeholder-shown) + .label {
+    top: -10px;
+    font-size: 0.8rem;
+    color: #fff;
+  }
+  
+  /* Submit button styling */
+  .submitButton {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    font-family: Clarkson, Helvetica, sans-serif;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+  
+  .submitButton:hover {
+    background: linear-gradient(90deg, #ff0075, #0070f3);
+    color: #fff;
+  }
+  

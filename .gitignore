@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+/firebase_to_sql/node_modules
 /.pnp
 .pnp.js
 .yarn/install-state.gz

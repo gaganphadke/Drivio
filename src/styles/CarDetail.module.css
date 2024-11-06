@@ -43,16 +43,7 @@
   cursor: pointer;
 }
 
-.carInfo h2 {
-  margin: 0;
-  font-size: 24px;
-}
 
-.carModel {
-  margin-left: 20px;
-  font-size: 14px;
-  color: grey;
-}
 
 .moreOptions {
   font-size: 24px;
@@ -336,4 +327,16 @@
   /* Center align vertically */
   margin-right: 20px;
   margin-top: 7px;
+}
+
+.carInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center aligns the children horizontally */
+}
+
+.carModel { /* Adjust spacing as needed */
+  text-align: center;
+  font-size: 14px;
+  color: grey; /* Optional if you want to center text in the span */
 }

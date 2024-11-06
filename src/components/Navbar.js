@@ -64,7 +64,7 @@ const Navbar = () => {
         </Link>
       </div>
       <ul className={styles.navLinks}>
-        <li><Link href="/browse">Browse Cars</Link></li>
+        <li><Link href="/cars">Browse Cars</Link></li>
         <li><Link href="/policies">Rental Policies</Link></li>
         <li><Link href="/deals">Deals & Discounts</Link></li>
         <li><Link href="/feedback">Feedback</Link></li>

@@ -4,16 +4,15 @@ import styles from '../styles/CircularProgress.module.css';
 const CircularProgress = ({ percentage, miles }) => {
   const radius = 20;
   const circumference = 2 * Math.PI * radius;
-  const [strokeDashoffset, setStrokeDashoffset] = useState(circumference); // Start with full offset
+  const [strokeDashoffset, setStrokeDashoffset] = useState(circumference);
 
   useEffect(() => {
-    // Trigger the animation on component mount
     setStrokeDashoffset(circumference - (percentage / 100) * circumference);
   }, [circumference, percentage]);
 
   return (
     <div className={styles.statItem}>
-      <h4 className={styles.title}>Gas volume</h4>
+      <h4 className={styles.title}>Remaining range</h4>
       <svg
         width="70"
         height="70"
@@ -37,7 +36,7 @@ const CircularProgress = ({ percentage, miles }) => {
         />
       </svg>
       <h3 className={styles.percen}>{percentage}%</h3>
-      <p className={styles.can}>Can drive {miles} miles</p>
+      <p className={styles.can}>Can drive {miles} kms</p>
     </div>
   );
 };

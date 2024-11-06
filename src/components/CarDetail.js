@@ -1,34 +1,53 @@
-import React from 'react';
+// CarDetail.js
+import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import styles from '../styles/CarDetail.module.css';
 import CircularProgress from './CircularProgress';
 
 const CarDetail = () => {
   const router = useRouter();
-  const handleBackClick = () => {
-    router.back();
-  };
+  const { reg_num } = router.query; // Access `reg_num` from the query
+  const [car, setCar] = useState(null);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    if (reg_num) {
+      fetch(`/api/getCarDetails?reg_num=${reg_num}`)
+        .then((res) => {
+          if (!res.ok) throw new Error('Car not found');
+          return res.json();
+        })
+        .then((data) => setCar(data))
+        .catch((error) => {
+          console.error('Failed to fetch car data:', error);
+          setError(error.message);
+        });
+    }
+  }, [reg_num]);
+
+  if (error) return <p>{error}</p>;
+  if (!car) return <p>Loading...</p>;
 
   return (
     <div className={styles.carDetailContainer}>
       <div className={styles.carHeader}>
-        <button className={styles.backButton} onClick={handleBackClick}>
+        <button className={styles.backButton} onClick={() => router.back()}>
           &larr;
         </button>
         <div className={styles.carInfo}>
-          <h2>BMW</h2>
-          <span className={styles.carModel}>M2</span>
+          <h2>{car.brand}</h2>
+          <span className={styles.carModel}>{car.model}</span>
         </div>
         <div className={styles.moreOptions}></div>
       </div>
 
       <div className={styles.carImageContainer}>
-        <img src="/bmw-m2-side.png" alt="BMW M2" className={styles.carImage} />
+        <img src={car.side} alt={`${car.brand} ${car.model}`} className={styles.carImage} />
       </div>
 
       {/* New Specifications Section */}
       <div className={styles.specsContainer}>
-        <img src='/bmw-logo.png' className={styles.logo} />
+        <img src={car.logo} className={styles.logo} alt={`${car.brand} logo`} />
 
         {/* New container for images above specs */}
         <div className={styles.imageContainer}>
@@ -39,15 +58,15 @@ const CarDetail = () => {
 
         <div className={styles.specifications}>
           <div className={styles.specItem}>
-            <span>328 km</span>
+            <span>{car.range_km} km</span>
             <p>Range</p>
           </div>
           <div className={styles.specItem}>
-            <span>250 kmph</span>
+            <span>{car.top_speed} kmph</span>
             <p>Top Speed</p>
           </div>
           <div className={styles.specItem}>
-            <span>2.1s</span>
+            <span>{car.pickup} s</span>
             <p>0-60 kmph</p>
           </div>
         </div>
@@ -56,30 +75,28 @@ const CarDetail = () => {
         <div className={styles.transmissionContainer}>
           <p className={styles.transmissionLabel}>Transmissions</p>
           <p className={styles.transmissionValue}>
-            Automatic
+            {car.transmission || 'Automatic'} {/* Assuming `car.transmission` is available */}
             <img src='/transmission.png' alt='Transmission Image' className={styles.transmissionImage} />
           </p>
         </div>
       </div>
 
-
-
       {/* Activity and Gas Volume */}
       <div className={styles.statsContainer}>
         <div className={styles.statItem}>
           <h4 className={styles.act}>Activity</h4>
-          <div className={styles.green}><span className={styles.activityChange}>+8%</span></div>
-          <h3>145 mph</h3>
+          <div className={styles.green}><span className={styles.activityChange}>+{car.activity}%</span></div>
+          <h3>{car.travel_m} kms</h3> {/* Assuming a default value */}
           <p>Traveled last month</p>
         </div>
         <div className={styles.statItem2}>
-          <CircularProgress percentage={69} miles={178} />
+          <CircularProgress percentage={car.rem_range} miles={car.rem_range_dist} />
         </div>
       </div>
 
       <div className={styles.bookingSection}>
-        <a className={styles.bookingButton}>Book car</a>
-        <p>$60 / day</p>
+        <button className={styles.bookingButton}>Book car</button>
+        <p>${car.price_per_day} / day</p>
       </div>
     </div>
   );
