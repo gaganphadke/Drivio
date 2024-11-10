@@ -56,9 +56,65 @@ const PaymentForm = ({ nextStep, prevStep, userData, carFormData }) => {
   const tripPrice = cars[0] ? cars[0].price : 0;
   const { name, email, phone } = userData;
 
-  const handlePaymentSuccess = (details) => {
+  // const handlePaymentSuccess = (details) => {
+  //   console.log("Payment success:", details);
+  //   nextStep();
+  // };
+
+  const handlePaymentSuccess = async (details) => {
     console.log("Payment success:", details);
-    nextStep();
+
+    // Step 1: Get the customer_id by mapping the email to the Customers table
+    try {
+      const email_main = localStorage.getItem('email');
+      const customerResponse = await fetch(`/api/getCustomerByEmail?email=${email_main}`);
+      const customerData = await customerResponse.json();
+      const customer_id = customerData.customer_id;
+
+      // Step 2: Insert data into the Booking table
+      const bookingData = {
+        reg_num: carFormData.reg_num,
+        customer_id: customer_id,
+        start_date: carFormData.pickUpDate,
+        end_date: carFormData.returnDate,
+        total_price: totalPrice,
+        status: 'On Going', // Default status
+      };
+
+      const bookingResponse = await fetch('/api/createBooking', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(bookingData),
+      });
+
+      const booking = await bookingResponse.json();
+
+      // Step 3: Insert data into the Payments table
+      const paymentData = {
+        booking_id: booking.booking_id,
+        payment_date: new Date().toISOString().split('T')[0], // today's date
+        payment_method: 'paypal', // Assuming PayPal for now
+        status: 'completed',
+        amount_left: 0, // Assuming full payment
+      };
+
+      const paymentResponse = await fetch('/api/createPayment', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(paymentData),
+      });
+
+      const payment = await paymentResponse.json();
+      console.log('Payment stored successfully', payment);
+
+      nextStep();
+    } catch (error) {
+      console.error('Error storing booking and payment data:', error);
+    }
   };
 
   const handleTermsChange = (e) => {
@@ -192,6 +248,7 @@ const PaymentForm = ({ nextStep, prevStep, userData, carFormData }) => {
                 }}
                 disabled={!termsAccepted}
               />
+              <button onClick={handlePaymentSuccess}>TEST</button>
             </PayPalScriptProvider>
           )}
         </div>

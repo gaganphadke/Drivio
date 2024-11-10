@@ -91,7 +91,7 @@ const PaymentPage = () => {
         />
       )}
 
-      {currentStep === 3 && <Confirmation formData={{ ...userData, ...carFormData }} />}
+      {currentStep === 3 && <Confirmation userData={userData} carFormData={carFormData} />}
     </div>
   );
 };

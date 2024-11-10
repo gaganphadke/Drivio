@@ -261,11 +261,6 @@ const CarsPage = () => {
                   With Driver
                 </button>
               </div>
-              <div className={styles.searchButtonContainer}>
-                <button type="submit" className={styles.searchButton}>
-                  Search →
-                </button>
-              </div>
             </div>
           </form>
         </div>

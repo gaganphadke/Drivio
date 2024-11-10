@@ -156,8 +156,8 @@ const CarDetail = () => {
         </select>
       </div>
 
-      <div className={styles.bookingSection}>
-        <button className={styles.bookingButton} onClick={handleBookingClick}><span>Book car</span></button>
+      <div className={styles.bookingSection} onClick={handleBookingClick}>
+        <button className={styles.bookingButton} ><span>Book car</span></button>
         <p>${car.price_per_day} / day</p>
       </div>
     </div>
