@@ -1,54 +1,49 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { PayPalButtons, PayPalScriptProvider } from "@paypal/react-paypal-js";
 import styles from '../styles/Checkout.module.css';
 import Image from 'next/image';
 
-const PaymentForm = ({ nextStep, prevStep, userData }) => {
-  const cars = [
-    {
-      id: 7,
-      category: 'Sportsback',
-      name: 'BMW M2',
-      transmission: 'Automatic',
-      passengers: 4,
-      luggage: 2,
-      rating: 4.8,
-      price: '$60',
-      image: '/bmw-m2.jpeg',
-    },
-    {
-      id: 4,
-      category: 'Sedan',
-      name: 'Camry',
-      transmission: 'Automatic',
-      passengers: 4,
-      luggage: 2,
-      rating: 4.9,
-      price: '$50',
-      image: '/camry.jpeg'
-    },
-  ];
+const PaymentForm = ({ nextStep, prevStep, userData, carFormData }) => {
+  const [cars, setCars] = useState([]); // State to hold car details
+  const [termsAccepted, setTermsAccepted] = useState(false);
+  const [totalPrice, setTotalPrice] = useState(0); // State to hold total price
+  const [isPriceCalculated, setIsPriceCalculated] = useState(false); // Flag to track price calculation
 
   const rentals = [
     {
-      pickupLocation: 'Jl. Raya Ponorogo - Trenggalek, Bancangan',
-      pickupDate: '2024-10-01T10:00:00',
-      returnDate: '2024-10-10T10:00:00'
+      pickupLocation: carFormData.returnLocation,
+      pickupDate: `${carFormData.pickUpDate}T${carFormData.pickUpTime}`,
+      returnDate: `${carFormData.returnDate}T${carFormData.returnTime}`,
     },
   ];
 
-  // Function to format the date
+  useEffect(() => {
+    const fetchCarDetails = async () => {
+      try {
+        const regNum = carFormData.reg_num;
+        const response = await fetch(`/api/getCar?reg_num=${regNum}`);
+        const carData = await response.json();
+        setCars([carData]);
+      } catch (error) {
+        console.error('Error fetching car details:', error);
+      }
+    };
+
+    if (carFormData.reg_num && cars.length === 0) {
+      fetchCarDetails();
+    }
+  }, [carFormData.reg_num, cars.length]);
+
   const formatDate = (dateString) => {
     const options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' };
     const date = new Date(dateString);
     return date.toLocaleString('en-GB', options).replace(',', '').replace(' at', ' -');
   };
 
-  // Function to calculate the duration in days
   const calculateDuration = (pickupDate, returnDate) => {
     const pickup = new Date(pickupDate);
     const returnDateObj = new Date(returnDate);
-    return (returnDateObj - pickup) / (1000 * 60 * 60 * 24);
+    return Math.floor((returnDateObj - pickup) / (1000 * 60 * 60 * 24)); // Duration in days
   };
 
   const rentalsWithDuration = rentals.map(rental => ({
@@ -58,9 +53,8 @@ const PaymentForm = ({ nextStep, prevStep, userData }) => {
     duration: calculateDuration(rental.pickupDate, rental.returnDate),
   }));
 
-  const tripPrice = cars.reduce((sum, car) => sum + parseFloat(car.price.replace('$', '')), 0);
+  const tripPrice = cars[0] ? cars[0].price : 0;
   const { name, email, phone } = userData;
-  const [termsAccepted, setTermsAccepted] = useState(false);
 
   const handlePaymentSuccess = (details) => {
     console.log("Payment success:", details);
@@ -71,9 +65,22 @@ const PaymentForm = ({ nextStep, prevStep, userData }) => {
     setTermsAccepted(e.target.checked);
   };
 
-  let totalPrice = (rentalsWithDuration[0].duration * tripPrice) + (15 * cars.length);
-  const tax = totalPrice * 0.04;
-  totalPrice = (totalPrice + tax).toFixed(2);
+  // Calculate total price and set it to the state
+  useEffect(() => {
+    if (rentalsWithDuration.length > 0 && cars.length > 0) {
+      let price = (rentalsWithDuration[0].duration * tripPrice) + (15 * cars.length);
+      const tax = price * 0.04;
+      price = (price + tax).toFixed(2);
+      setTotalPrice(price);
+      setIsPriceCalculated(true); // Set the flag to true after the price is calculated
+    }
+  }, [rentalsWithDuration, cars, tripPrice]);
+
+  const pickupDate = new Date(`${carFormData.pickUpDate}T${carFormData.pickUpTime}`);
+  pickupDate.setHours(pickupDate.getHours() + 12); // Add 12 hours to pickup time for hold duration
+  const holdUntilDate = pickupDate.toLocaleString('en-GB', {
+    weekday: 'short', year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit'
+  }).replace(',', '').replace(' at', ' -');
 
   return (
     <div className={styles.checkoutContainer}>
@@ -83,7 +90,7 @@ const PaymentForm = ({ nextStep, prevStep, userData }) => {
           <img className={styles.time} src='/time.png' alt="Clock icon" />
           <div className={styles.notiText}>
             <p className={styles.bold}>Your Booking is on Hold</p>
-            <p>We hold your booking until <span className={styles.bold}>Feb 14, 12:00 AM</span>. If your reservation changes, we will get back to you.</p>
+            <p>We hold your booking until <span className={styles.bold}>{holdUntilDate}</span>. If your reservation changes, we will get back to you.</p>
           </div>
         </div>
 
@@ -149,9 +156,12 @@ const PaymentForm = ({ nextStep, prevStep, userData }) => {
             <div><p><strong>Trip Price</strong></p><p>$ {tripPrice}/day</p></div>
             <div><p><strong>Delivery Fee</strong></p><p>$ {15 * cars.length}</p></div>
             <div><p><strong>Duration</strong></p><p>{rentalsWithDuration[0].duration} days</p></div>
-            <div><p><strong>Tax</strong></p><p>$ {tax.toFixed(2)}</p></div>
+            <div><p><strong>Tax</strong></p><p>$ {parseFloat(totalPrice * 0.04).toFixed(2)}</p></div>
           </div>
-          <div className={styles.total}><p><strong>Total</strong></p><p><img className={styles.tag} src='/tag.png' alt="Tag icon" /> $ {totalPrice}</p></div>
+          <div className={styles.total}>
+            <p><strong>Total</strong></p>
+            <p><img className={styles.tag} src='/tag.png' alt="Tag icon" /> $ {totalPrice}</p>
+          </div>
         </div>
 
         <div className={styles.paymentDetail}>
@@ -161,26 +171,29 @@ const PaymentForm = ({ nextStep, prevStep, userData }) => {
           <div className={styles.termsCheckbox}>
             <input type="checkbox" id="terms" checked={termsAccepted} onChange={handleTermsChange} />
             <label className={styles.tc} htmlFor="terms">
-              I agree to DriveIO <a className={styles.blue}>Terms & Conditions</a> and <a className={styles.blue}>Privacy Policy</a>
+              I agree to DriveIO <a className={styles.blue} href="#">Terms and Conditions</a> and <a className={styles.blue} href="#">Privacy Policy</a>.
             </label>
           </div>
 
-          <PayPalScriptProvider options={{ "client-id": "Abrd8YZVQR652MGnjXfmStyBGHCJwrX8JG5XY-BVXq1ps0WuGuZftLeVftF-Lp3DEireg53qF6Vv5npR" }}>
-            <PayPalButtons
-              style={{ layout: "vertical" }}
-              createOrder={(data, actions) => {
-                return actions.order.create({
-                  purchase_units: [{
-                    amount: { value: totalPrice.toString() } // Ensure amount is in string format
-                  }]
-                });
-              }}
-              onApprove={(data, actions) => {
-                return actions.order.capture().then(handlePaymentSuccess);
-              }}
-              disabled={!termsAccepted}
-            />
-          </PayPalScriptProvider>
+          {/* Only render PayPal button when the price has been calculated */}
+          {isPriceCalculated && (
+            <PayPalScriptProvider options={{ "client-id": "Abrd8YZVQR652MGnjXfmStyBGHCJwrX8JG5XY-BVXq1ps0WuGuZftLeVftF-Lp3DEireg53qF6Vv5npR" }}>
+              <PayPalButtons
+                style={{ layout: "vertical" }}
+                createOrder={(data, actions) => {
+                  return actions.order.create({
+                    purchase_units: [{
+                      amount: { value: totalPrice } // Ensure amount is in string format
+                    }]
+                  });
+                }}
+                onApprove={(data, actions) => {
+                  return actions.order.capture().then(handlePaymentSuccess);
+                }}
+                disabled={!termsAccepted}
+              />
+            </PayPalScriptProvider>
+          )}
         </div>
       </div>
     </div>

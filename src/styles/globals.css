@@ -56,7 +56,7 @@ body.dark .trans {
   color: rgb(185, 185, 185);
 }
 
-body.dark .comfort div {
+body.dark .comfort div  {
   background-color: #414141;
 }
 
@@ -107,6 +107,10 @@ body.dark .settings button:hover{
 /* body.dark .form-1 form{
   background-color: #000000;
 } */
+
+body.dark .form form{
+  background-color: #454545;
+}
 
 input[type="date"]::-webkit-inner-spin-button,
 input[type="date"]::-webkit-calendar-picker-indicator {

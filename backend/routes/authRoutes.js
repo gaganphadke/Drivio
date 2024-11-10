@@ -11,8 +11,7 @@ router.post('/login-signup', async (req, res) => {
     return res.status(400).json({ error: 'Email and password are required' });
   }
 
-  // Hash the password
-  const hashedPassword = await bcrypt.hash(customer_password, 10);
+  // Hash the password  const hashedPassword = await bcrypt.hash(customer_password, 10);
 
   // Prepare the SQL query
   const sql = `INSERT INTO Customers (fname, lname, customer_email, customer_h_password, phone_number, c_addr, DL, Adhaar_num) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`;

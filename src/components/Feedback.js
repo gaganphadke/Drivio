@@ -8,7 +8,7 @@ import neutralImg from '../assets/neutral.png';
 import vGoodImg from '../assets/v_good.png';
 import vBadImg from '../assets/v_bad.png';
 
-const Feedback = ({ regNum, customerId }) => {
+const Feedback = () => {
   const [selectedEmoji, setSelectedEmoji] = useState(null);
   const [feedbackText, setFeedbackText] = useState("");
 
@@ -25,20 +25,25 @@ const Feedback = ({ regNum, customerId }) => {
   };
 
   const handleSubmit = async () => {
-    if (selectedEmoji === null || feedbackText.trim() === "") {
-      alert("Please select a rating and add a comment.");
+    if (selectedEmoji === null) {
+      alert("Please select a rating.");
       return;
     }
 
+    const email = localStorage.getItem('email'); // Get email from localStorage
+    const date = new Date().toISOString().split('T')[0]; // Get current date in 'YYYY-MM-DD' format
+
+    // Prepare feedback data
     const feedbackData = {
-      regNum,
-      customerId,
+      email,
       rating: emojis[selectedEmoji].rating,
       feedback: feedbackText,
+      date,
     };
 
     try {
-      const response = await fetch('/api/submit-feedback', {
+      // Send feedback data to the API
+      const response = await fetch('/api/submitFeedback', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -46,16 +51,17 @@ const Feedback = ({ regNum, customerId }) => {
         body: JSON.stringify(feedbackData),
       });
 
+      const data = await response.json();
       if (response.ok) {
         alert("Thank you for your feedback!");
         setSelectedEmoji(null);
-        setFeedbackText("");
+        setFeedbackText(""); // Clear the feedback text after submission
       } else {
-        alert("There was an error submitting your feedback.");
+        alert("Failed to submit feedback. Please try again.");
       }
     } catch (error) {
-      console.error("Error submitting feedback:", error);
-      alert("Error submitting feedback.");
+      console.error('Error submitting feedback:', error);
+      alert("An error occurred while submitting feedback. Please try again later.");
     }
   };
 

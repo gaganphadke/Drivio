@@ -82,7 +82,7 @@
 .commentBox {
   width: 100%;
   padding: 12px;
-  margin-top: 20px;
+  /* margin-top: 20px; */
   border-radius: 8px; /* Slightly larger radius for a softer look */
   border: 1px solid #ccc;
   resize: none;
@@ -104,7 +104,6 @@
 /* Change cursor on hover */
 .commentBox:hover {
   cursor:text; /* Change cursor to pointer */
-  
 }
 
 /* Placeholder style */

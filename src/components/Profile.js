@@ -1,19 +1,31 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import '../styles/Profile.module.css';
 
 export default function UserProfile() {
-    const [userType, setUserType] = useState('customer'); // Default to 'customer'
+    const router = useRouter();
+    const { email, password } = router.query;
+
+    const [userType, setUserType] = useState('customer');
     const [formData, setFormData] = useState({
         fname: '',
         lname: '',
-        email: '',
-        password: '',
+        email: email || '',
+        password: password || '',
         phone: '',
         address: '',
         licenseNumber: '',
         aadhar: '',
-        regNumber: '' // Only for owner
+        regNumber: '' 
     });
+
+    useEffect(() => {
+        setFormData((prevData) => ({
+            ...prevData,
+            email: email || prevData.email,
+            password: password || prevData.password
+        }));
+    }, [email, password]);
 
     // Handle input changes
     const handleInputChange = (e) => {
@@ -30,17 +42,22 @@ export default function UserProfile() {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ userType, ...formData })
             });
-            const message = await response.text();
-            console.log(message);
+
+            if (response.ok) {
+                // Store token in localStorage on successful form submission
+                localStorage.setItem('isAuthenticated', 'true');
+                router.push('/');
+            } else {
+                console.error('Registration failed');
+            }
         } catch (error) {
             console.error('Error:', error);
         }
     };
-    
 
     return (
         <div className="container">
-            <h1>User Profile</h1>
+            <h1>Complete Your Profile</h1>
 
             {/* User Type Selection */}
             <div className="user-type-selection">
@@ -98,6 +115,7 @@ export default function UserProfile() {
                         value={formData.email}
                         onChange={handleInputChange}
                         required
+                        readOnly
                     />
                 </div>
 
@@ -109,6 +127,7 @@ export default function UserProfile() {
                         value={formData.password}
                         onChange={handleInputChange}
                         required
+                        readOnly
                     />
                 </div>
 
@@ -156,7 +175,6 @@ export default function UserProfile() {
                     />
                 </div>
 
-                {/* Additional field for Owner */}
                 {userType === 'owner' && (
                     <div className="form-group">
                         <label>Vehicle Registration Number</label>
@@ -173,7 +191,6 @@ export default function UserProfile() {
                 <button type="submit">Submit</button>
             </form>
 
-            {/* Styling */}
             <style jsx>{`
                 .container {
                     max-width: 600px;

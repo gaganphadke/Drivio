@@ -1,150 +1,163 @@
 .topPicksSection {
-    padding: 2rem 0; /* Reduced horizontal padding */
-    text-align: center;
-    max-width: 1400px; /* Increased max-width for less side gap */
-    margin: 0 auto;
-    margin-left: 83px;
-    user-select: none;
-    -webkit-user-select: none;
-    margin-top: 35px;
-  }
-  
-  .heading {
-    text-align: left;
-    margin-bottom: 2rem;
-  }
-  
-  .heading h2 {
-    font-size: 2.5rem;
-    font-weight: 600;
-    color: #000000;
-  }
-  
-  .heading p {
-    color: #777;
-    font-size: 1.3rem;
-  }
-  
-  .carsGrid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 cars in a row */
-    gap: 2rem; /* Increased gap between cards */
-    margin-top: 2rem;
-  }
-  
-  .carContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: transform 0.3s ease;
-    max-width: 280px; /* Slightly increased width */
-    height: 430px; /* Increased container height */
-    padding-bottom: 60px;
-    cursor: pointer;
-  }
-  
-  .carContainer:hover {
-    transform: scale(1.05);
-  }
-  
-  .carCard {
-    position: relative;
-    background-color: white;
-    padding: 1rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 300px; /* Further increased height for the container */
-  }
-  
-  .categoryTag {
-    position: absolute;
-    top: 12px;
-    left: 12px; /* Positioned to the left corner */
-    background-color: #f5f5f5;
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    font-size: 1rem;
-    font-weight: 600;
-    color: #333;
-  }
-  
-  .carImage {
-    width: 100%;
-    height: auto;
-    max-width: 240px; /* Increased image width */
-    object-fit: contain;
-    user-select: none;
-    -webkit-user-select: none;
-  }
-  
-  .carDetailsContainer {
-    margin-top: 1rem;
-    text-align: left;
-    width: 100%;
-  }
-  
-  
-  .carTitle {
-    font-size: 1.4rem;
-    font-weight: bold;
-  }
-  
-  .transmission {
-    display: flex;
-    align-items: center;
-    font-size: 1.1rem;
-    color: #777;
-    margin: 0.3rem 0;
-  }
-  
-  .transmission .icon {
-    margin-right: 0.5rem;
-  }
-  
-  .carDetails {
-    display: flex;
-    justify-content: flex-start; /* Align items to the left */
-    margin: 0.2rem 0; /* Decrease the vertical gap between elements */
-  }
-  
-  .carDetails span {
-    display: flex;
-    align-items: center;
-    margin-right: 1rem; /* Optional: add a small right margin between items */
-  }
-  
-  .icon {
-    display: inline-block;
-    margin-right: 0.2rem; /* Reduced space between icon and text */
-  }
-  
-  .priceInfo {
-    display: flex;
-    align-items: center;
-    font-size: 1.1rem;
-    color: #333;
-  }
-  
-  .priceInfo .price {
-    font-size: 2rem;
-    color: #ff5c5c;
-    font-weight: bold;
-    margin-left: 10px;
-    margin-right: 5px;
-  }
-  
-  .perDay {
-    font-size: 1rem;
-    color: #777;
-  }
-  
+  padding: 2rem 0;
+  /* Reduced horizontal padding */
+  text-align: center;
+  max-width: 1400px;
+  /* Increased max-width for less side gap */
+  margin: 0 auto;
+  margin-left: 83px;
+  user-select: none;
+  -webkit-user-select: none;
+  margin-top: 35px;
+}
+
+.heading {
+  text-align: left;
+  margin-bottom: 2rem;
+}
+
+.heading h2 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #000000;
+}
+
+.heading p {
+  color: #777;
+  font-size: 1.3rem;
+}
+
+.carsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  /* 4 cars in a row */
+  gap: 2rem;
+  /* Increased gap between cards */
+  margin-top: 2rem;
+}
+
+.carContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease;
+  max-width: 280px;
+  /* Slightly increased width */
+  height: 430px;
+  /* Increased container height */
+  padding-bottom: 60px;
+  cursor: pointer;
+}
+
+.carContainer:hover {
+  transform: scale(1.05);
+}
+
+.carCard {
+  position: relative;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 300px;
+  /* Further increased height for the container */
+}
+
+.categoryTag {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  /* Positioned to the left corner */
+  background-color: #f5f5f5;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.carImage {
+  width: 100%;
+  height: auto;
+  max-width: 240px;
+  /* Increased image width */
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.carDetailsContainer {
+  margin-top: 1rem;
+  text-align: left;
+  width: 100%;
+}
 
 
-  /* Search Bar */
+.carTitle {
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.transmission {
+  display: flex;
+  align-items: center;
+  font-size: 1.1rem;
+  color: #777;
+  margin: 0.3rem 0;
+}
+
+.transmission .icon {
+  margin-right: 0.5rem;
+}
+
+.carDetails {
+  display: flex;
+  justify-content: flex-start;
+  /* Align items to the left */
+  margin: 0.2rem 0;
+  /* Decrease the vertical gap between elements */
+}
+
+.carDetails span {
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
+  /* Optional: add a small right margin between items */
+}
+
+.icon {
+  display: inline-block;
+  margin-right: 0.2rem;
+  /* Reduced space between icon and text */
+}
+
+.priceInfo {
+  display: flex;
+  align-items: center;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.priceInfo .price {
+  font-size: 2rem;
+  color: #ff5c5c;
+  font-weight: bold;
+  margin-left: 10px;
+  margin-right: 5px;
+}
+
+.perDay {
+  font-size: 1rem;
+  color: #777;
+}
+
+
+
+/* Search Bar */
 /* Container for search and filters */
 .filterControls {
   display: flex;
@@ -161,7 +174,8 @@
   border-radius: 5px;
   font-size: 16px;
   transition: border-color 0.3s;
-  margin-bottom: 15px; /* Adds space between search bar and filters */
+  margin-bottom: 15px;
+  /* Adds space between search bar and filters */
 }
 
 .searchBar:focus {
@@ -178,14 +192,17 @@
   font-size: 16px;
   transition: border-color 0.3s;
   cursor: pointer;
-  margin-bottom: 10px; /* Space between each filter */
+  margin-bottom: 10px;
+  /* Space between each filter */
 }
 
 .filterRow {
   display: flex;
-  gap: 15px; /* Increased gap between each filter */
+  gap: 15px;
+  /* Increased gap between each filter */
   justify-content: center;
-  flex-wrap: wrap; /* Ensures filters wrap on smaller screens */
+  flex-wrap: wrap;
+  /* Ensures filters wrap on smaller screens */
 }
 
 .filterSelect:focus {
@@ -196,25 +213,238 @@
 /* Reset Button */
 .resetButton {
   margin-top: 20px;
-  padding: 12px 25px; /* Slightly larger padding for a prominent button */
+  padding: 12px 25px;
+  /* Slightly larger padding for a prominent button */
   font-size: 1rem;
   color: #fff;
-  background: linear-gradient(135deg, #ff5c5c, #d9534f); /* Gradient background */
+  background: linear-gradient(135deg, #ff5c5c, #d9534f);
+  /* Gradient background */
   border: none;
-  border-radius: 6px; /* Rounded corners for a softer look */
+  border-radius: 6px;
+  /* Rounded corners for a softer look */
   cursor: pointer;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Adds a 3D effect */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  /* Adds a 3D effect */
   transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease;
 }
 
 .resetButton:hover {
-  background: linear-gradient(135deg, #d9534f, #c9302c); /* Darker gradient on hover */
-  transform: translateY(-2px); /* Slight lift on hover */
+  background: linear-gradient(135deg, #d9534f, #c9302c);
+  /* Darker gradient on hover */
+  transform: translateY(-2px);
+  /* Slight lift on hover */
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
 }
 
-.resetButton:active{
+.resetButton:active {
   transform: translateY(0);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
+.content {
+  position: relative;
+  z-index: 2;
+  text-align: left;
+  /* Align heading text to the left */
+  max-width: 1200px;
+  /* Maintain max width */
+  /* Margin to move heading down */
+  margin-left: 25px;
+}
+
+.content h1 {
+  font-size: 4.6rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  /* You can adjust this value for more space */
+  margin-bottom: 20px;
+  text-align: left;
+  margin-top: 120px;
+}
+
+.searchForm {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  /* Space between input fields */
+  background: rgba(0, 0, 0, 0.6);
+  padding: 20px;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+.inputGroup {
+  flex: 1 1 calc(16.66% - 20px);
+  /* Shrink input fields to fit 6 in one row */
+  min-width: 150px;
+  /* Minimum width for each input field */
+  display: flex;
+  flex-direction: column;
+}
+
+.inputGroup label {
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: whitesmoke;
+}
+
+.inputGroup input {
+  padding: 10px 10px 10px 40px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.inputGroup input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.inputWrapper {
+  position: relative;
+}
+
+.inputIcon {
+  position: absolute;
+  left: 10px;
+  /* Consistent icon placement */
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.actionGroup {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.filterGroup {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.filterGroup p {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #b2b2b2;
+}
+
+.filterButton {
+  background: rgba(0, 0, 0, 0.5);
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 17px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.1s;
+}
+
+.filterButton:hover {
+  background: rgba(0, 81, 255, 0.788);
+  transform: translateY(-2px);
+  color: whitesmoke;
+}
+
+.searchButtonContainer {
+  margin-left: auto;
+}
+
+.searchButton {
+  background: #0070f3;
+  color: #fff;
+  padding: 12px 30px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background-color 0.3s, transform 0.1s;
+}
+
+.searchButton:hover {
+  background: #0056b3;
+  transform: translateY(-2px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .content h1 {
+    font-size: 2rem;
+  }
+
+  .searchForm {
+    padding: 20px;
+  }
+
+  .inputGroup input {
+    width: 100%;
+    /* Full width for inputs on smaller screens */
+  }
+
+  .inputGroup {
+    flex: 1 1 100%;
+    /* Full width for input groups on smaller screens */
+  }
+
+  .actionGroup {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filterGroup {
+    margin-bottom: 15px;
+  }
+
+  .searchButtonContainer {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .searchButton {
+    width: 100%;
+  }
+}
+
+/* Top section */
+.content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  width: 90%;
+  max-width: 1200px;
+}
+
+.selected {
+  background-color: rgba(0, 67, 213, 0.7);
+  color: white;
+}
+
+@media (max-width: 1200px) {
+  .inputGroup {
+    flex: 1 1 calc(25% - 20px);
+  }
+}
+
+@media (max-width: 768px) {
+  .inputGroup {
+    flex: 1 1 calc(50% - 20px);
+    /* 2 inputs per row on tablets */
+  }
+}
+
+@media (max-width: 480px) {
+  .inputGroup {
+    flex: 1 1 100%;
+    /* Full width inputs on smaller screens */
+  }
+}

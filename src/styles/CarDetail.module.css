@@ -155,6 +155,11 @@
   cursor: pointer;
 }
 
+.bookingButton span{
+  font-size: 20px;
+  font-weight: 600;
+}
+
 .specsContainer {
   display: flex;
   /* Use flexbox for centering */
@@ -339,4 +344,42 @@
   text-align: center;
   font-size: 14px;
   color: grey; /* Optional if you want to center text in the span */
+}
+
+/* Styles for the car condition dropdown */
+.conditionsDropdown {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.conditionsDropdown label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.dropdown {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  color: #666;
+}
+
+.disabled {
+  color: #999;
+}
+
+.dropdown:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.dropdown option {
+  font-size: 14px;
+  color: #555;
 }

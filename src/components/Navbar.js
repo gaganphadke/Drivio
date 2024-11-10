@@ -1,21 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import Image from 'next/image'; // Import Next.js Image component
+import Image from 'next/image';
+import { useRouter } from 'next/router'; // Import useRouter for page redirection
 import styles from '../styles/Navbar.module.css';
 
-import sunIcon from '../assets/sun.png'; // Adjust path as necessary
-import moonIcon from '../assets/moon.png'; // Adjust path as necessary
-import logo from '../assets/logo.png'; // Import your logo image
+import sunIcon from '../assets/sun.png';
+import moonIcon from '../assets/moon.png';
+import logo from '../assets/logo.png';
 
 const Navbar = () => {
   const [theme, setTheme] = useState('light');
-  const [visible, setVisible] = useState(true); // State to manage navbar visibility
-  let lastScrollY = typeof window !== 'undefined' ? window.scrollY : 0; // Last scroll position
-
-  const themeIcons = [
-    { label: 'Sun', image: sunIcon },
-    { label: 'Moon', image: moonIcon }
-  ];
+  const [visible, setVisible] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const router = useRouter(); // Initialize useRouter
+  let lastScrollY = typeof window !== 'undefined' ? window.scrollY : 0;
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme');
@@ -24,25 +22,32 @@ const Navbar = () => {
       document.body.className = savedTheme;
     }
 
+    // Check if user is logged in on initial load
+    const isAuthenticated = localStorage.getItem('isAuthenticated');
+    if (isAuthenticated === 'true') {
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
+    }
+
     const handleScroll = () => {
-      // Check the scroll direction
       if (typeof window !== 'undefined') {
         const scrollY = window.scrollY;
         if (scrollY > lastScrollY) {
-          setVisible(false); // Scrolling down
+          setVisible(false);
         } else {
-          setVisible(true); // Scrolling up
+          setVisible(true);
         }
-        lastScrollY = scrollY; // Update the last scroll position
+        lastScrollY = scrollY;
       }
     };
 
-    window.addEventListener('scroll', handleScroll); // Attach the scroll event listener
+    window.addEventListener('scroll', handleScroll);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll); // Clean up the event listener on unmount
+      window.removeEventListener('scroll', handleScroll);
     };
-  }, [lastScrollY]); // Add lastScrollY to dependencies
+  }, [lastScrollY]);
 
   const toggleTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
@@ -51,46 +56,83 @@ const Navbar = () => {
     localStorage.setItem('theme', newTheme);
   };
 
-  // Define the box shadow based on the current theme
+  const handleLogin = () => {
+    router.push('/login-signup'); // Redirect to login/signup page
+  };
+
+  const handleLogout = () => {
+    localStorage.setItem('isAuthenticated', 'false');
+    localStorage.setItem('email', '');
+    setIsLoggedIn(false);
+
+    setTimeout(() => {
+      router.push('/'); // Redirect to the homepage after logout
+    }, 100);
+  };
+
+  const handleLinkClick = (e, path) => {
+    if (!isLoggedIn) {
+      e.preventDefault(); // Prevent navigation
+      router.push('/login-signup'); // Redirect to login/signup if not logged in
+    } else {
+      router.push(path); // Navigate to the link if logged in
+    }
+  };
+
   const buttonShadow = theme === 'dark'
-    ? '0 4px 12px rgba(255, 255, 255, 0.5)' // White shadow for dark mode
-    : '4px 4px 8px rgba(0, 0, 0, 0.2)'; // Black shadow for light mode
+    ? '0 4px 12px rgba(255, 255, 255, 0.5)'
+    : '4px 4px 8px rgba(0, 0, 0, 0.2)';
 
   return (
     <nav className={`${styles.navbar} ${visible ? styles.visible : styles.hidden}`}>
       <div className={styles.logo}>
         <Link href="/">
-          <Image src={logo} alt="Logo" width={140} /> {/* Use the logo image here */}
+          <Image src={logo} alt="Logo" width={140} />
         </Link>
       </div>
       <ul className={styles.navLinks}>
-        <li><Link href="/cars">Browse Cars</Link></li>
-        <li><Link href="/policies">Rental Policies</Link></li>
-        <li><Link href="/deals">Deals & Discounts</Link></li>
-        <li><Link href="/feedback">Feedback</Link></li>
+        <li>
+          <Link href="/cars" onClick={(e) => handleLinkClick(e, '/cars')}>Browse Cars</Link>
+        </li>
+        <li>
+          <Link href="/policies" onClick={(e) => handleLinkClick(e, '/policies')}>Rental Policies</Link>
+        </li>
+        <li>
+          <Link href="/deals" onClick={(e) => handleLinkClick(e, '/deals')}>Deals & Discounts</Link>
+        </li>
+        <li>
+          <Link href="/feedback" onClick={(e) => handleLinkClick(e, '/feedback')}>Feedback</Link>
+        </li>
       </ul>
       <div className={styles.rightSection}>
         <label className={styles.switch}>
           <input type="checkbox" checked={theme === 'dark'} onChange={toggleTheme} />
           <span className={`${styles.slider} ${theme === 'dark' ? styles.darkMode : styles.lightMode}`}>
             <span className={styles.icon}>
-              <Image 
-                src={theme === 'light' ? sunIcon : moonIcon} 
-                alt={theme === 'light' ? themeIcons[0].label : themeIcons[1].label} 
-                width={24} // Set the width as needed
-                height={24} // Set the height as needed
+              <Image
+                src={theme === 'light' ? sunIcon : moonIcon}
+                alt={theme === 'light' ? 'Sun Icon' : 'Moon Icon'}
+                width={24}
+                height={24}
               />
             </span>
           </span>
         </label>
-        <Link 
-          href="/login-signup" 
-          className={styles.loginButton} 
-           // Apply the dynamic box shadow here
-          // style={{ boxShadow: buttonShadow }}
-        >
-          <span>Sign in</span>
-        </Link>
+        {isLoggedIn ? (
+          <button 
+            onClick={handleLogout} 
+            className={styles.loginButton}
+          >
+            <span>Log out</span>
+          </button>
+        ) : (
+          <button 
+            onClick={handleLogin}
+            className={styles.loginButton}
+          >
+            <span>Sign in</span>
+          </button>
+        )}
       </div>
     </nav>
   );

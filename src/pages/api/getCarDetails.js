@@ -1,8 +1,8 @@
+// getCarDetails.js
 import mysql from 'mysql2/promise';
 
 export default async function handler(req, res) {
-  const  {reg_num}  = req.query;  // Extract reg_num from query parameters
-  console.log(reg_num)
+  const { reg_num } = req.query;
   const db = await mysql.createConnection({
     host: 'localhost',
     user: 'root',
@@ -11,7 +11,7 @@ export default async function handler(req, res) {
   });
 
   try {
-    const [rows] = await db.query(`
+    const [carRows] = await db.query(`
       SELECT 
         Cars.reg_num,
         details.model,
@@ -37,16 +37,34 @@ export default async function handler(req, res) {
       WHERE Cars.reg_num = ?
     `, [reg_num]);
 
+    const [conditionRows] = await db.query(`
+      SELECT 
+        engine_condition,
+        tire_condition,
+        brakes_condition,
+        battery_condition,
+        fuel_level,
+        mileage,
+        DATE_FORMAT(last_service_date, '%Y-%m-%d') AS last_service_date,
+        insurance,
+        battery_level,
+        cylinder_level
+      FROM CarCondition
+      WHERE reg_num = ?
+    `, [reg_num]);
+
     await db.end();
 
-    if (rows.length === 0) {
+    if (carRows.length === 0) {
       return res.status(404).json({ error: 'Car not found' });
     }
 
-    const carDetails = rows[0];  // Get the first (and only) result
-    res.status(200).json(carDetails);
+    const carDetails = carRows[0];
+    const carConditions = conditionRows[0] || {};
+
+    res.status(200).json({ car: carDetails, conditions: carConditions });
   } catch (error) {
-    console.error('Database error:', error);  // Log the error details
+    console.error('Database error:', error);
     res.status(500).json({ error: 'Failed to fetch car details' });
   }
 }
