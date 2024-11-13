@@ -29,16 +29,15 @@ export default async function handler(req, res) {
 
         if (customerResults.length > 0) {
           // Hash the incoming password
-          const hashedPassword = await bcrypt.hash(password, 10);
-          console.log('Hashed incoming password:', hashedPassword); // Log the hashed password
-
-          // Compare hashed password with the stored hash
           const match = await bcrypt.compare(password, customerResults[0].customer_h_password);
           console.log('Password match result for Customer:', match); // Log the match result
 
           if (match) {
             console.log('User authenticated successfully in Customers table');
-            return res.status(200).json({ isValidUser: true });
+            return res.status(200).json({
+              isValidUser: true,
+              userType: 'customer', // Return the user type as customer
+            });
           }
         }
 
@@ -53,17 +52,16 @@ export default async function handler(req, res) {
           console.log('Owner query results:', ownerResults); // Log query results for Owners table
 
           if (ownerResults.length > 0) {
-            // Hash the incoming password for Owner
-            const hashedPassword = await bcrypt.hash(password, 10);
-            console.log('Hashed incoming password for Owner:', hashedPassword); // Log the hashed password for Owner
-
-            // Compare hashed password with the stored hash
+            // Compare the incoming password for Owner
             const match = await bcrypt.compare(password, ownerResults[0].owner_h_password);
-            console.log('Password match result for Owner:', match); // Log the match result for Owner
+            console.log('Password match result for Owner:', match); // Log the match result
 
             if (match) {
               console.log('User authenticated successfully in Owners table');
-              return res.status(200).json({ isValidUser: true });
+              return res.status(200).json({
+                isValidUser: true,
+                userType: 'owner', // Return the user type as owner
+              });
             }
           }
 

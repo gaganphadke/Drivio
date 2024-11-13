@@ -56,20 +56,35 @@ const PaymentForm = ({ nextStep, prevStep, userData, carFormData }) => {
   const tripPrice = cars[0] ? cars[0].price : 0;
   const { name, email, phone } = userData;
 
-  // const handlePaymentSuccess = (details) => {
-  //   console.log("Payment success:", details);
-  //   nextStep();
-  // };
-
   const handlePaymentSuccess = async (details) => {
     console.log("Payment success:", details);
 
-    // Step 1: Get the customer_id by mapping the email to the Customers table
     try {
       const email_main = localStorage.getItem('email');
       const customerResponse = await fetch(`/api/getCustomerByEmail?email=${email_main}`);
       const customerData = await customerResponse.json();
       const customer_id = customerData.customer_id;
+
+      // Step 1: Insert data into the RentalHistory table with owner_id
+      const rentalData = {
+        owner_id: cars[0].owner_id,
+        reg_num: carFormData.reg_num,
+        customer_id: customer_id,
+        start_date: carFormData.pickUpDate,
+        end_date: carFormData.returnDate,
+        amount_earned: totalPrice
+      };
+
+      const rentalResponse = await fetch('/api/createRentalHistory', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(rentalData),
+      });
+
+      const rentalHistory = await rentalResponse.json();
+      console.log('Rental history stored successfully', rentalHistory);
 
       // Step 2: Insert data into the Booking table
       const bookingData = {
@@ -113,7 +128,7 @@ const PaymentForm = ({ nextStep, prevStep, userData, carFormData }) => {
 
       nextStep();
     } catch (error) {
-      console.error('Error storing booking and payment data:', error);
+      console.error('Error storing rental history, booking, and payment data:', error);
     }
   };
 
@@ -121,7 +136,6 @@ const PaymentForm = ({ nextStep, prevStep, userData, carFormData }) => {
     setTermsAccepted(e.target.checked);
   };
 
-  // Calculate total price and set it to the state
   useEffect(() => {
     if (rentalsWithDuration.length > 0 && cars.length > 0) {
       let price = (rentalsWithDuration[0].duration * tripPrice) + (15 * cars.length);
@@ -133,11 +147,12 @@ const PaymentForm = ({ nextStep, prevStep, userData, carFormData }) => {
   }, [rentalsWithDuration, cars, tripPrice]);
 
   const pickupDate = new Date(`${carFormData.pickUpDate}T${carFormData.pickUpTime}`);
-  pickupDate.setHours(pickupDate.getHours() + 12); // Add 12 hours to pickup time for hold duration
+  pickupDate.setHours(pickupDate.getHours() + 12);
   const holdUntilDate = pickupDate.toLocaleString('en-GB', {
     weekday: 'short', year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit'
   }).replace(',', '').replace(' at', ' -');
 
+  
   return (
     <div className={styles.checkoutContainer}>
       {/* Left Column for Booking Info */}

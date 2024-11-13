@@ -18,12 +18,11 @@ db.connect((err) => {
     console.log('Connected to the database.');
 });
 
-
 // Insert into Customers or Owners
 router.post('/register', async (req, res) => {
     console.log('Received data:', req.body);
 
-    const { userType, fname, lname, email, password, phone, address, licenseNumber, aadhar, regNumber } = req.body;
+    const { userType, fname, lname, email, password, phone, address, licenseNumber, aadhar } = req.body;
 
     try {
         const hashedPassword = await bcrypt.hash(password, 10);
@@ -32,12 +31,12 @@ router.post('/register', async (req, res) => {
         const query = userType === 'customer' ?
             `INSERT INTO Customers (fname, lname, customer_email, customer_h_password, phone_number, c_addr, DL, Adhaar_num)
              VALUES (?, ?, ?, ?, ?, ?, ?, ?)` :
-            `INSERT INTO Owners (fname, lname, owner_email, owner_h_password, phone_number, o_addr, reg_num, DL, Adhaar_num)
-             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+            `INSERT INTO Owners (fname, lname, owner_email, owner_h_password, phone_number, o_addr, DL, Adhaar_num)
+             VALUES (?, ?, ?, ?, ?, ?, ?, ?)`;
 
         const values = userType === 'customer' ?
             [fname, lname, email, hashedPassword, phone, address, licenseNumber, aadhar] :
-            [fname, lname, email, hashedPassword, phone, address, regNumber, licenseNumber, aadhar];
+            [fname, lname, email, hashedPassword, phone, address, licenseNumber, aadhar]; // Removed regNumber
 
         console.log('Executing query with values:', values);
 
@@ -55,6 +54,4 @@ router.post('/register', async (req, res) => {
     }
 });
 
-
 module.exports = router; // Export the router for use in app.js
- 

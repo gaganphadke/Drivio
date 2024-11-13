@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/router'; // Import useRouter for page redirection
-import styles from '../styles/Navbar.module.css';
+import styles from '../styles/Navbar-no-float.module.css';
 
 import sunIcon from '../assets/sun.png';
 import moonIcon from '../assets/moon.png';
@@ -121,15 +121,13 @@ const Navbar = () => {
         <li>
           <Link href="/add-car" onClick={handleAddCarClick}>Add Your Car</Link>
         </li>
-        {/* Conditionally render "Edit Profile" or "Admin" link */}
-        
+
         <li>
           <Link href="/feedback" onClick={(e) => handleLinkClick(e, '/feedback')}>Feedback</Link>
         </li>
-
         {userType === 'admin' ? (
           <li>
-            <Link href="/admin" onClick={(e) => handleLinkClick(e, '/admin')}>Dashboard</Link>
+            <Link href="/admin" onClick={(e) => handleLinkClick(e, '/Dashboard')}>Admin</Link>
           </li>
         ) : (
           <li>
@@ -152,14 +150,14 @@ const Navbar = () => {
           </span>
         </label>
         {isLoggedIn ? (
-          <button 
-            onClick={handleLogout} 
+          <button
+            onClick={handleLogout}
             className={styles.loginButton}
           >
             <span>Log out</span>
           </button>
         ) : (
-          <button 
+          <button
             onClick={handleLogin}
             className={styles.loginButton}
           >

@@ -2,41 +2,18 @@ import styles from '../styles/AdminDashboard.module.css';
 import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
 
-
-// const carData = [
-//   { clientName: 'Liam Johnson', carType: 'Honda Brio', carNumber: '010 MOR', status: 'On Going' },
-//   { clientName: 'Noah Anderson', carType: 'Pajero Sport', carNumber: '696 TON', status: 'Finished' },
-//   { clientName: 'Ethan Smith', carType: 'Agya', carNumber: '665 KIT', status: 'Finished' },
-//   { clientName: 'Mason Davis', carType: 'N/A', carNumber: 'N/A', status: 'Canceled' },
-//   { clientName: 'Isabella Martinez', carType: 'Hyundai Elantra', carNumber: '234 DEF', status: 'Finished' },
-//   { clientName: 'Olivia Garcia', carType: 'Nissan Altima', carNumber: '345 GHI', status: 'On Going' },
-//   { clientName: 'James Wilson', carType: 'Ford Mustang', carNumber: '456 JKL', status: 'Finished' },
-//   { clientName: 'Ava Rodriguez', carType: 'Chevrolet Malibu', carNumber: '567 MNO', status: 'Canceled' },
-//   { clientName: 'Sophia Brown', carType: 'Kia Soul', carNumber: '678 PQR', status: 'Finished' },
-//   { clientName: 'Benjamin Taylor', carType: 'Volkswagen Jetta', carNumber: '789 STU', status: 'On Going' },
-//   { clientName: 'Lucas Martinez', carType: 'Mazda CX-5', carNumber: '890 VWX', status: 'Finished' },
-//   { clientName: 'Amelia Hernandez', carType: 'Subaru Forester', carNumber: '901 YZA', status: 'On Going' },
-//   { clientName: 'Elijah Lee', carType: 'Honda Accord', carNumber: '012 BCD', status: 'Finished' },
-//   { clientName: 'Charlotte White', carType: 'Ford Explorer', carNumber: '123 EFG', status: 'Canceled' },
-//   { clientName: 'Harper Scott', carType: 'Chevrolet Tahoe', carNumber: '234 HIJ', status: 'Finished' },
-//   { clientName: 'Henry Kim', carType: 'Nissan Sentra', carNumber: '345 KLM', status: 'On Going' },
-//   { clientName: 'Mia Young', carType: 'Kia Sorento', carNumber: '456 NOP', status: 'Finished' },
-//   { clientName: 'Aiden Clark', carType: 'N/A', carNumber: 'N/A', status: 'Canceled' },
-//   { clientName: 'Scarlett Lewis', carType: 'Toyota RAV4', carNumber: '678 TUV', status: 'Finished' },
-//   { clientName: 'Daniel Walker', carType: 'BMW X3', carNumber: '789 WXY', status: 'On Going' }
-// ];
-
-
 const AdminDashboard = () => {
   const [carData, setCarData] = useState([]);
+  const [bestCarModel, setBestCarModel] = useState(null);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await fetch('/api/bookings'); // Accessing the API route
         const data = await response.json(); // Parsing the JSON response
-    
+
         console.log(data); // Log the data to see its structure
-    
+
         if (Array.isArray(data)) {
           setCarData(data); // Only set if it's an array
         } else {
@@ -47,7 +24,23 @@ const AdminDashboard = () => {
       }
     };
 
+    const fetchBestCar = async () => {
+      try {
+        const response = await fetch('/api/bestCar'); // Fetching best car data
+        const data = await response.json();
+
+        if (data && data.model) {
+          setBestCarModel(data.model); // Set the best car model
+        } else {
+          console.error("Error fetching best car:", data);
+        }
+      } catch (error) {
+        console.error("Error fetching best car:", error);
+      }
+    };
+
     fetchData();
+    fetchBestCar(); // Fetch best car on page load
   }, []);
 
   return (
@@ -95,14 +88,6 @@ const AdminDashboard = () => {
                 Car Reports
               </li>
             </ul>
-
-            {/* <div className={styles.sellCarContainer}>
-            <div className={styles.cart}>
-              <Image src="/cart.png" alt="Sell Icon" width={24} height={24} className={styles.sellIcon} />
-            </div>
-            <p>We connect you with thousands of potential buyers in your area.</p>
-            <button className={styles.sellCarBtn}>Sell Your Car</button>
-          </div> */}
           </div>
           <div className='settings'>
             <div className={styles.settingsBtn}>
@@ -178,8 +163,8 @@ const AdminDashboard = () => {
           <div className='right'>
             <div className={styles.profileCard}>
               <img src="/profile.png" alt="User Profile" className={styles.profileImage} />
-              <h3>Olivia Deny</h3>
-              <p>oliviadeny01@gmail.com</p>
+              <h3>Gagan</h3>
+              <p>admin@gmail.com</p>
               <button className={styles.editButton}><span>Edit Profile</span></button>
             </div>
           </div>
@@ -190,9 +175,9 @@ const AdminDashboard = () => {
             <div className='right'>
               <div className={styles.metricCard}>
                 <div className={styles.metricText}>
-                  <h3>Turnover</h3>
-                  <p>$1492.21</p>
-                  <span><a className={styles.turnover}>+45</a> from last month</span>
+                  <h3>Best Car</h3>
+                  <p>{bestCarModel}</p>
+                  {/* <span><a className={styles.turnover}>+45</a> from last month</span> */}
                 </div>
                 <img src="/turnover.png" alt="Turnover Icon" className={styles.metricImage} />
               </div>

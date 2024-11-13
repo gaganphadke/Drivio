@@ -11,6 +11,9 @@ const AddCar = () => {
     price: '',
     location: '',
     engineType: '',
+    kms_driven: '', // Added kms_driven
+    passengers: '', // Added passengers
+    luggage: '',    // Added luggage
 
     // Step 2 - Car Condition
     reg_num: '',
@@ -43,8 +46,9 @@ const AddCar = () => {
 
   const handleNext = async () => {
     if (step === 1) {
-      // Send Car Condition data to backend before moving to step 3
+      // Send Car Details data to backend before moving to step 2
       try {
+        const email = localStorage.getItem('email'); // Get email from localStorage
         const response = await fetch('http://localhost:5001/api1/addCarDetails', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -55,7 +59,11 @@ const AddCar = () => {
             location: formData.location,
             engine_type: formData.engineType,
             car_type: formData.carType,
-            transmission: formData.transmission
+            transmission: formData.transmission,
+            kms_driven: formData.kms_driven, // Pass kms_driven
+            passengers: formData.passengers, // Pass passengers
+            luggage: formData.luggage,       // Pass luggage
+            email: email                     // Pass email from localStorage
           })
         });
         const result = await response.json();
@@ -64,7 +72,7 @@ const AddCar = () => {
           alert('Car details added successfully!');
           setStep(2); // Move to the next step if submission was successful
         } else {
-          alert('Failed to add car condition.');
+          alert('Failed to add car details.');
         }
       } catch (error) {
         console.error('Error adding car details:', error);
@@ -157,6 +165,11 @@ const AddCar = () => {
           <input type="text" name="location" placeholder="Add Location" value={formData.location} onChange={handleChange} required />
           <input type="text" name="engineType" placeholder="Enter Engine Type" value={formData.engineType} onChange={handleChange} required />
           <input type="text" name="reg_num" placeholder="Registration Number" value={formData.reg_num} onChange={handleChange} required />
+          
+          {/* New fields */}
+          <input type="text" name="kms_driven" placeholder="KMs Driven" value={formData.kms_driven} onChange={handleChange} required />
+          <input type="text" name="passengers" placeholder="Passengers" value={formData.passengers} onChange={handleChange} required />
+          <input type="text" name="luggage" placeholder="Luggage" value={formData.luggage} onChange={handleChange} required />
         </div>
       )}
 

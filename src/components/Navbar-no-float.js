@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image'; // Import Next.js Image component
 import styles from '../styles/Navbar-no-float.module.css';
+import { useRouter } from 'next/router';
 
 import sunIcon from '../assets/sun.png'; // Adjust path as necessary
 import moonIcon from '../assets/moon.png'; // Adjust path as necessary
@@ -11,12 +12,21 @@ const Navbar = () => {
   const [theme, setTheme] = useState('light');
   const [visible, setVisible] = useState(true); // State to manage navbar visibility
   let lastScrollY = typeof window !== 'undefined' ? window.scrollY : 0; // Last scroll position
-
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const router = useRouter();
   const themeIcons = [
     { label: 'Sun', image: sunIcon },
     { label: 'Moon', image: moonIcon }
   ];
+  const handleLogout = () => {
+    localStorage.setItem('isAuthenticated', 'false');
+    localStorage.setItem('userType', 'customer'); // Reset userType on logout
+    setIsLoggedIn(false);
 
+    setTimeout(() => {
+      router.push('/'); // Redirect to the homepage after logout
+    }, 100);
+  };
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) {
@@ -65,24 +75,30 @@ const Navbar = () => {
       </div>
       <ul className={styles.navLinks}>
         <li><Link href="/cars">Browse Cars</Link></li>
-        <li><Link href="/policies">Rental Policies</Link></li>
-        <li><Link href="/deals">Deals & Discounts</Link></li>
+        <li><Link href="/add-car">Add Your Car</Link></li>
         <li><Link href="/feedback">Feedback</Link></li>
+        <li><Link href="/admin">Dashboard</Link></li>
       </ul>
       <div className={styles.rightSection}>
         <label className={styles.switch}>
           <input type="checkbox" checked={theme === 'dark'} onChange={toggleTheme} />
           <span className={`${styles.slider} ${theme === 'dark' ? styles.darkMode : styles.lightMode}`}>
             <span className={styles.icon}>
-              <Image 
-                src={theme === 'light' ? sunIcon : moonIcon} 
-                alt={theme === 'light' ? themeIcons[0].label : themeIcons[1].label} 
+              <Image
+                src={theme === 'light' ? sunIcon : moonIcon}
+                alt={theme === 'light' ? themeIcons[0].label : themeIcons[1].label}
                 width={24} // Set the width as needed
                 height={24} // Set the height as needed
               />
             </span>
           </span>
         </label>
+        <button
+          onClick={handleLogout}
+          className={styles.loginButton}
+        >
+          <span>Log out</span>
+        </button>
       </div>
     </nav>
   );

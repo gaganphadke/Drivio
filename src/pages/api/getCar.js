@@ -18,7 +18,7 @@ export default async function handler(req, res) {
   try {
     const query = `
       SELECT reg_num, model, price_per_day, location, status, images, kms_driven, condition_id, engine_type, 
-             car_type, transmission, overall_rating 
+             car_type, transmission, overall_rating, passengers, luggage, owner_id
       FROM Cars 
       WHERE reg_num = ?
     `;
@@ -37,14 +37,15 @@ export default async function handler(req, res) {
       category: car.car_type,  // Assuming car_type is the category
       name: car.model,  // Model is used as the car name
       transmission: car.transmission,
-      passengers: 4,  // Static value, can be modified based on data if available
-      luggage: 2,  // Static value, can be modified based on data if available
-      rating: car.overall_rating,  // Rating from the database
-      price: car.price_per_day,  // Price formatted with $
-      image: car.images,  // Assuming images contains the image URL
+      passengers: car.passengers,
+      luggage: car.luggage,
+      rating: car.overall_rating,
+      price: car.price_per_day,
+      image: car.images,
+      owner_id: car.owner_id,  // Include owner_id in the response
     };
 
-    // Return the transformed car details
+    // Return the transformed car details with owner_id
     return res.status(200).json(transformedCarDetails);
     
   } catch (error) {

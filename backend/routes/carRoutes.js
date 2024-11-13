@@ -22,19 +22,30 @@ const withForeignKeyChecks = async (query, params = []) => {
 
 // Endpoint to add car details
 router.post('/addCarDetails', async (req, res) => {
-    const { reg_num, model, price_per_day, location, engine_type, car_type, transmission } = req.body;
+    const { reg_num, model, price_per_day, location, engine_type, car_type, transmission, passengers, kms_driven, luggage, email } = req.body;
 
-    if (!reg_num || !model || !price_per_day || !location || !engine_type || !car_type || !transmission) {
+    if (!reg_num || !model || !price_per_day || !location || !engine_type || !car_type || !transmission || !passengers || !kms_driven || !luggage || !email) {
         return res.status(400).json({ error: "All fields are required" });
     }
 
     try {
+        // Retrieve the owner_id based on the email from the Owners table
+        const ownerQuery = `SELECT owner_id FROM Owners WHERE owner_email = ?`;
+        const [ownerResult] = await db.promise().query(ownerQuery, [email]);
+
+        if (ownerResult.length === 0) {
+            return res.status(404).json({ error: "Owner not found with the given email" });
+        }
+
+        const owner_id = ownerResult[0].owner_id;
+
+        // Insert car details with the owner_id
         const CarQuery = `
-            INSERT INTO Cars (reg_num, model, price_per_day, location, engine_type, car_type, transmission)
-            VALUES (?, ?, ?, ?, ?, ?, ?)
+            INSERT INTO Cars (reg_num, model, price_per_day, location, engine_type, car_type, transmission, passengers, kms_driven, luggage, owner_id)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         `;
 
-        await withForeignKeyChecks(CarQuery, [reg_num, model, price_per_day, location, engine_type, car_type, transmission]);
+        await withForeignKeyChecks(CarQuery, [reg_num, model, price_per_day, location, engine_type, car_type, transmission, passengers, kms_driven, luggage, owner_id]);
         console.log("Car details added successfully");
         res.status(200).json({ message: "Car details added successfully" });
     } catch (error) {

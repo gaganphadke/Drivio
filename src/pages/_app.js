@@ -1,4 +1,4 @@
-import '../styles/globals.css';
+import '../styles/globals-1.css';
 import { useEffect, useState } from 'react';
 
 function MyApp({ Component, pageProps }) {

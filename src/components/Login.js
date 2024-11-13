@@ -17,7 +17,19 @@ const Login = () => {
     console.log('Password:', password);
 
     try {
-      // Send email and password to the API for validation
+      // Check for admin credentials first
+      if (email === 'admin@gmail.com' && password === 'Admin@123') {
+        // Set the user type as admin and authentication status as true
+        localStorage.setItem('email', email);
+        localStorage.setItem('isAuthenticated', 'true');
+        localStorage.setItem('userType', 'admin');
+
+        console.log('Logged in as admin');
+        router.push('/'); // Redirect to home page after successful login
+        return; // Exit after successful admin login
+      }
+
+      // If it's not admin, proceed to check with the API
       const response = await fetch('/api/checkUserLogin', {
         method: 'POST',
         headers: {
@@ -35,6 +47,7 @@ const Login = () => {
 
         // Set the isAuthenticated flag in localStorage
         localStorage.setItem('isAuthenticated', 'true');
+        localStorage.setItem('userType', data.userType);
         router.push('/'); // Redirect to home page after successful login
       } else {
         console.error('Login failed');
@@ -46,19 +59,34 @@ const Login = () => {
     }
   };
 
+
   // Handle Google login with Firebase only (no DB check)
   const handleGoogleLogin = async () => {
     try {
+      const userType = window.confirm('Do you want to sign in as an Owner? Click "OK" for Owner, "Cancel" for Customer.')
+        ? 'owner'
+        : 'customer';
       const result = await signInWithPopup(auth, provider);
-      console.log('Firebase Google User:', result.user);
-
-      // Store the Google account email in localStorage
       const googleEmail = result.user.email;
-      localStorage.setItem('email', googleEmail);
-      console.log('Stored Email:', googleEmail); // Log the stored email
 
-      // Set the isAuthenticated flag in localStorage
+
+      // Set the userType in localStorage
+      localStorage.setItem('email', googleEmail);
       localStorage.setItem('isAuthenticated', 'true');
+      localStorage.setItem('userType', userType);
+
+      // Send user data to the API to save in the appropriate table
+      const response = await fetch('/api/googleSignUp', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email: googleEmail, userType }),
+      });
+
+      if (!response.ok) throw new Error('Failed to save user in database');
+
+      console.log(`Logged in as ${userType}:`, googleEmail);
       router.push('/'); // Redirect to home page after successful login
     } catch (error) {
       console.error('Google Login Error:', error);
