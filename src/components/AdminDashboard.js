@@ -5,17 +5,16 @@ import React, { useState, useEffect } from 'react';
 const AdminDashboard = () => {
   const [carData, setCarData] = useState([]);
   const [bestCarModel, setBestCarModel] = useState(null);
+  const [totalIncome, setTotalIncome] = useState(0); // New state for total income
+  const [mostPenalizedCar, setMostPenalizedCar] = useState(null); // State for most penalized car
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('/api/bookings'); // Accessing the API route
-        const data = await response.json(); // Parsing the JSON response
-
-        console.log(data); // Log the data to see its structure
-
+        const response = await fetch('/api/bookings');
+        const data = await response.json();
         if (Array.isArray(data)) {
-          setCarData(data); // Only set if it's an array
+          setCarData(data);
         } else {
           console.error("Fetched data is not an array:", data);
         }
@@ -26,11 +25,10 @@ const AdminDashboard = () => {
 
     const fetchBestCar = async () => {
       try {
-        const response = await fetch('/api/bestCar'); // Fetching best car data
+        const response = await fetch('/api/bestCar');
         const data = await response.json();
-
         if (data && data.model) {
-          setBestCarModel(data.model); // Set the best car model
+          setBestCarModel(data.model);
         } else {
           console.error("Error fetching best car:", data);
         }
@@ -39,9 +37,40 @@ const AdminDashboard = () => {
       }
     };
 
+    const fetchTotalIncome = async () => {
+      try {
+        const response = await fetch('/api/totalIncome');
+        const data = await response.json();
+        if (data && data.totalIncome) {
+          setTotalIncome(data.totalIncome);
+        } else {
+          console.error("Error fetching total income:", data);
+        }
+      } catch (error) {
+        console.error("Error fetching total income:", error);
+      }
+    };
+
+    const fetchMostPenalizedCar = async () => {
+      try {
+        const response = await fetch('/api/mostPenalizedCar');
+        const data = await response.json();
+        if (data && data.model) {
+          setMostPenalizedCar(data.model);
+        } else {
+          console.error("Error fetching most penalized car:", data);
+        }
+      } catch (error) {
+        console.error("Error fetching most penalized car:", error);
+      }
+    };
+
     fetchData();
-    fetchBestCar(); // Fetch best car on page load
+    fetchBestCar();
+    fetchTotalIncome(); // Fetch total income on page load
+    fetchMostPenalizedCar(); // Fetch the most penalized car on page load
   }, []);
+
 
   return (
     <div className={styles.dashboard}>
@@ -184,16 +213,15 @@ const AdminDashboard = () => {
               <div className={styles.metricCard}>
                 <div className={styles.metricText}>
                   <h3>Income</h3>
-                  <p>$7432.53</p>
+                  <p>${totalIncome}</p>
                   <span><a className={styles.income}>+72</a> from last month</span>
                 </div>
                 <img src="/income.png" alt="Income Icon" className={styles.metricImage} />
               </div>
               <div className={styles.metricCard}>
                 <div className={styles.metricText}>
-                  <h3>Outcome</h3>
-                  <p>$7592.84</p>
-                  <span><a className={styles.outcome}>+12</a> from last month</span>
+                  <h3>Top Penalized</h3>
+                  <p>{mostPenalizedCar}</p>
                 </div>
                 <img src="/outcome.png" alt="Outcome Icon" className={styles.metricImage} />
               </div>
